@@ -1,0 +1,466 @@
+openapi: 3.0.3
+info:
+  title: projet SGBD
+  description: >
+    C'est mon API pour le projet SGBD
+  termsOfService: projetSGBD 
+  contact:
+    email: test@hainaut-promsoc.be
+  version: 1.0.0
+externalDocs:
+  description: Any document link you want to generate along with API.
+  url: http://swagger.io
+servers:
+  - url: https://test.ipam.be/v1
+tags:
+  - name: patient
+    description: Patient definition
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+  - name: centreVaccination
+    description: Centre de vaccination definition
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+  - name: Association
+    description: Association definition
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+  - name: Vaccin
+    description: Vaccin definition
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io    
+  - name: Planning
+    description: Planning definition
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io 
+
+paths:
+  /api/v1/patient/{idPatient}:
+    get:
+      tags:
+        - patient
+      summary: Returns the patient
+      description: Returns the patient
+      operationId: getPatientByIdPatient
+      parameters:
+        - name: idPatient
+          in: path
+          description: Customer Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+    delete:
+      tags:
+        - patient
+      summary: Delete the patient
+      description: Deletes the patient
+      operationId: deletePatient
+      parameters:
+        - name: idPatient
+          in: path
+          description: patient id
+          required: true
+          schema:
+            type: number
+      responses:
+        204:
+          description: successful operation
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+  /api/v1/addPatient:
+    post:
+      tags:
+      - patient
+      summary: Create the patient
+      description: Create the patient
+      operationId: createPatient
+      requestBody: 
+        description: user object
+        content: 
+          application/xml:
+            schema: 
+              $ref: '#/components/schemas/Patient'
+          application/json:    
+            schema:
+              $ref: '#/components/schemas/Patient'
+      responses:
+        201:
+          description: created
+          content: {}
+          
+  /api/v1/centreVaccination/{idCentreVaccination}:
+    get:
+      tags:
+        - centreVaccination
+      summary: Returns the centreVaccination
+      description: Returns the centreVaccination
+      operationId: getCentreVaccinationByIdCentreVaccination
+      parameters:
+        - name: idCentreVaccination
+          in: path
+          description: CentreVaccination Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        404:
+          description: Given centreVaccination ID doesn't exist
+          content: {}
+    delete:
+      tags:
+        - centreVaccination
+      summary: Delete the centreVaccination
+      description: Deletes the centreVaccination
+      operationId: deleteCentreVaccination
+      parameters:
+        - name: idCentreVaccination
+          in: path
+          description: centreVaccination id
+          required: true
+          schema:
+            type: number
+      responses:
+        204:
+          description: successful operation
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+  /api/v1/addCentreVaccination:
+    post:
+      tags:
+      - centreVaccination
+      summary: Create the centreVaccination
+      description: Create the centreVaccination
+      operationId: createCentreVaccination
+      requestBody: 
+        description: centreVaccination object
+        content: 
+          application/xml:
+            schema: 
+              $ref: '#/components/schemas/CentreVaccination'
+          application/json:    
+            schema:
+              $ref: '#/components/schemas/CentreVaccination'
+      responses:
+        201:
+          description: created
+          content: {}
+  /api/v1/association/{idAssociation}:
+    get:
+      tags:
+        - Association
+      summary: Returns the association
+      description: Returns the association
+      operationId: getAssociationByIdAssociation
+      parameters:
+        - name: idAssociation
+          in: path
+          description: association Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+    delete:
+      tags:
+        - Association
+      summary: Delete the association
+      description: Deletes the association
+      operationId: deleteAssociation
+      parameters:
+        - name: idAssociation
+          in: path
+          description: association id
+          required: true
+          schema:
+            type: number
+      responses:
+        204:
+          description: successful operation
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+  /api/v1/addAssociation:
+    post:
+      tags:
+      - Association
+      summary: Create the association
+      description: Create the association
+      operationId: createAssociation
+      requestBody: 
+        description: association object
+        content: 
+          application/xml:
+            schema: 
+              $ref: '#/components/schemas/Association'
+          application/json:    
+            schema:
+              $ref: '#/components/schemas/Association'
+      responses:
+        201:
+          description: created
+          content: {}
+  /api/v1/vaccin/{idVaccin}:
+    get:
+      tags:
+        - Vaccin
+      summary: Returns the vaccin
+      description: Returns the vaccin
+      operationId: getVaccinByIdVaccin
+      parameters:
+        - name: idVaccin
+          in: path
+          description: vaccin Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+    delete:
+      tags:
+        - Vaccin
+      summary: Delete the vaccin
+      description: Deletes the vaccin
+      operationId: deleteVaccin
+      parameters:
+        - name: idVaccin
+          in: path
+          description: vaccin id
+          required: true
+          schema:
+            type: number
+      responses:
+        204:
+          description: successful operation
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+  /api/v1/addVaccin:
+    post:
+      tags:
+      - Vaccin
+      summary: Create the vaccin
+      description: Create the vaccin
+      operationId: createVaccin
+      requestBody: 
+        description: vaccin object
+        content: 
+          application/xml:
+            schema: 
+              $ref: '#/components/schemas/Vaccin'
+          application/json:    
+            schema:
+              $ref: '#/components/schemas/Vaccin'
+      responses:
+        201:
+          description: created
+          content: {}
+  /api/v1/planning/{idPlanning}:
+    get:
+      tags:
+        - Planning
+      summary: Returns the Planning
+      description: Returns the Planning
+      operationId: getPlanningByIdPlanning
+      parameters:
+        - name: idPlanning
+          in: path
+          description: Planning Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+    delete:
+      tags:
+        - Planning
+      summary: Delete the Planning
+      description: Deletes the Planning
+      operationId: deletePlanning
+      parameters:
+        - name: idPlanning
+          in: path
+          description: Planning id
+          required: true
+          schema:
+            type: number
+      responses:
+        204:
+          description: successful operation
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+  /api/v1/addPlanning:
+    post:
+      tags:
+      - Planning
+      summary: Create the Planning
+      description: Create the Planning
+      operationId: createPlanning
+      requestBody: 
+        description: Planning object
+        content: 
+          application/xml:
+            schema: 
+              $ref: '#/components/schemas/Planning'
+          application/json:    
+            schema:
+              $ref: '#/components/schemas/Planning'
+      responses:
+        201:
+          description: created
+          content: {}        
+components:
+  schemas:
+    Patient:
+      description: A patient Class
+      type: object
+      properties:
+        idPatient:
+          description: id
+          type: integer
+          format: int64
+        numeroNational:
+          description: numero national.
+          type: string
+        nomFamille:
+          description: nom de famille.
+          type: string
+        Prenom:
+          description: prenom.
+          type: string
+        dateNaissance:
+          description: date de naissance.
+          type: string
+        Pays:
+          description: pays
+          type: string
+        Ville:
+          description: ville
+          type: string
+        Adresse:
+          description: adresse
+          type: string
+        Planning:
+          description: Collection of planning
+          type: array
+          items:
+            $ref: '#/components/schemas/Planning'
+    CentreVaccination:
+      description: a CentreVaccination Class
+      type: object
+      properties:
+        idCentreVaccination:
+          description: id
+          type: integer
+          format: int64
+        localite:
+          description: localite
+          type: string
+        adresse:
+          description: adresse
+          type: string
+        heureOuverture:
+          description: heure d'ouverture
+          type: string
+        planning:
+          description: planning
+          type: string
+        patient:
+          description: Collection of patient
+          type: array
+          items:
+            $ref: '#/components/schemas/Patient'
+        vaccin:
+          description: Collection of vaccin
+          type: array
+          items:
+            $ref: '#/components/schemas/Vaccin'
+    Vaccin:
+      description: a Vaccin class
+      type: object
+      properties:
+        idVaccin:
+          description: id
+          type: integer
+          format: int64
+        nomVaccin:
+          description: nom du vaccin
+          type: string
+        nbsJoursEntreDoses:
+          description: la duree entre doses
+          type: integer
+        numeroLot:
+          description: le numero de lot
+          type: integer
+    Association:
+      description: a Association class
+      type: object
+      properties:
+        idAssociation:
+          description: id
+          type: integer
+          format: int64
+        patient:
+          description: a collection of patient
+          type: array
+          items:
+            $ref: '#/components/schemas/Patient'
+        centreVaccination:
+          description: a collection of CentreVaccination
+          type: array
+          items:
+            $ref: '#/components/schemas/CentreVaccination'
+    Planning:
+      description: a Planning class
+      type: object
+      properties: 
+        idPlanning:
+          description: id
+          type: integer
+          format: int64
+        dateRdv:
+          description: date de rdv
+          type: string
+        patient:
+          description: a collection of patient
+          type: array
+          items:
+            $ref: '#/components/schemas/Patient'  
+        centreVaccination:
+          description: a collection of CentreVaccination
+          type: array
+          items:
+            $ref: '#/components/schemas/CentreVaccination'  
+            

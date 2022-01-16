@@ -55,7 +55,7 @@ public class PatientController implements PatientApi {
 
 
 	@Override
-	public ResponseEntity<Patient> getPatientByIdPatient(Integer idPatient) {
+	public ResponseEntity<Patient> getPatientByIdPatient(Long idPatient) {
 		// TODO Auto-generated method stub
 		return patientService.patientByIdPatient(idPatient).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
 	} 

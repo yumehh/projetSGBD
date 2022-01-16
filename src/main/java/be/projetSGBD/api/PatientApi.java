@@ -90,7 +90,7 @@ public interface PatientApi {
         @ApiResponse(code = 404, message = "Given user ID doesn't exist") })
     @RequestMapping(value = "/api/v1/patient/{idPatient}",
         method = RequestMethod.GET)
-    default ResponseEntity<Patient> getPatientByIdPatient(@ApiParam(value = "Customer Identifier",required=true) @PathVariable("idPatient") Integer idPatient) {
+    default ResponseEntity<Patient> getPatientByIdPatient(@ApiParam(value = "Customer Identifier",required=true) @PathVariable("idPatient") Long idPatient) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

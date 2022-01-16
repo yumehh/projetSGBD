@@ -1,11 +1,15 @@
 package be.projetSGBD.hateoas;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
+import be.projetSGBD.controller.CentreVaccinationController;
 import be.projetSGBD.controller.PatientController;
 import be.projetSGBD.entity.PatientEntity;
 import be.projetSGBD.model.Patient;
@@ -31,6 +35,8 @@ public class PatientRepresentationModelAssembler extends RepresentationModelAsse
 		Patient resource = createModelWithId(entity.getIdPatient(), entity);
 		BeanUtils.copyProperties(entity, resource);
 		
+		resource.add(linkTo(methodOn(PatientController.class).getPatientByIdPatient(entity.getIdPatient())).withSelfRel());
+
 		return resource;
 	}
 

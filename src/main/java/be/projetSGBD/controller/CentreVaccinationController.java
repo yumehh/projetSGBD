@@ -75,6 +75,8 @@ public class CentreVaccinationController implements CentreVaccinationApi {
 		return centreService.centreVaccinationById(idCentreVaccination).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
 	}
 	
+	
+	
 	public ResponseEntity<List<Patient>> getPatientByIdCentreVaccination(String idCentreVaccination){
 		
 		return ok(Collections.EMPTY_LIST);

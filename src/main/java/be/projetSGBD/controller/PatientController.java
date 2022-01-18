@@ -6,8 +6,6 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,9 +18,7 @@ import be.projetSGBD.service.PatientService;
 
 @RestController
 public class PatientController implements PatientApi {
-	
-	private static final Logger log = LoggerFactory.getLogger(PatientController.class);
-	
+
 	private PatientService patientService;
 	private PatientRepresentationModelAssembler assembler;
 	
@@ -44,6 +40,7 @@ public class PatientController implements PatientApi {
 	@Override
 	public ResponseEntity<Patient> createPatient(@Valid Patient patient) {
 		return Optional.of(patientService.createPatient(patientService.toEntity(patient))).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		
 	}
 
 
@@ -56,10 +53,9 @@ public class PatientController implements PatientApi {
 
 	@Override
 	public ResponseEntity<Patient> getPatientByIdPatient(Long idPatient) {
-		// TODO Auto-generated method stub
-		return patientService.patientByIdPatient(idPatient).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
-	} 
+		return patientService.patientById(idPatient).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+	}
 	
 	
-
+	
 }

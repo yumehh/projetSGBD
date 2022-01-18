@@ -432,6 +432,9 @@ components:
           description: id
           type: integer
           format: int64
+        zone:
+          description: zone de localite
+          type: string
         patient:
           description: a collection of patient
           type: array

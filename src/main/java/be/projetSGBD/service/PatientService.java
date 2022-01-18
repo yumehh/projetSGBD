@@ -1,32 +1,30 @@
 package be.projetSGBD.service;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import be.projetSGBD.entity.PatientEntity;
-import be.projetSGBD.entity.PlanningEntity;
 import be.projetSGBD.model.Patient;
-import be.projetSGBD.model.Planning;
 
 public interface PatientService {
 
-	public Optional<PatientEntity> patientByIdPatient(long idPatient);
+	public Optional<PatientEntity> patientById(long idPatient);
 	
-	Patient toModel(PatientEntity pe);
+	public Patient toModel(PatientEntity patient);
 	
-	public PatientEntity createPatient(String numeroNational, String nomFamille, String prenom, Date DateNaissance, String Pays, String Ville, String Adresse);
+	public PatientEntity createPatient(
+			String numeroNational,
+			String nomFamille,
+			String prenom,
+			Date dateNaissance,
+			String pays,
+			String ville,
+			String adresse
+			);
+	
+	public PatientEntity createPatient(PatientEntity pe);
 	
 	public void deletePatient(long idPatient);
-
+	
 	public PatientEntity toEntity(Patient model);
-	
-	public PatientEntity createPatient(PatientEntity entity);
-	
-	public Set<Planning> toModelList(List<PlanningEntity> list);
-	
-	public void dropEmail(String email);
-	
-	
 }

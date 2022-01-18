@@ -50,7 +50,7 @@ public interface AssociationApi {
     @RequestMapping(value = "/api/v1/addAssociation",
         consumes = { "application/xml", "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Void> createAssociation(@ApiParam(value = "association object"  )  @Valid @RequestBody(required = false) Association association) {
+    default ResponseEntity<Association> createAssociation(@ApiParam(value = "association object"  )  @Valid @RequestBody(required = false) Association association) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -70,7 +70,7 @@ public interface AssociationApi {
         @ApiResponse(code = 404, message = "Given user ID doesn't exist") })
     @RequestMapping(value = "/api/v1/association/{idAssociation}",
         method = RequestMethod.DELETE)
-    default ResponseEntity<Void> deleteAssociation(@ApiParam(value = "association id",required=true) @PathVariable("idAssociation") BigDecimal idAssociation) {
+    default ResponseEntity<Void> deleteAssociation(@ApiParam(value = "association id",required=true) @PathVariable("idAssociation") Long idAssociation) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -90,7 +90,7 @@ public interface AssociationApi {
         @ApiResponse(code = 404, message = "Given user ID doesn't exist") })
     @RequestMapping(value = "/api/v1/association/{idAssociation}",
         method = RequestMethod.GET)
-    default ResponseEntity<Void> getAssociationByIdAssociation(@ApiParam(value = "association Identifier",required=true) @PathVariable("idAssociation") Integer idAssociation) {
+    default ResponseEntity<Association> getAssociationByIdAssociation(@ApiParam(value = "association Identifier",required=true) @PathVariable("idAssociation") Long idAssociation) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

@@ -42,7 +42,7 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
 
   @JsonProperty("Prenom")
   @JacksonXmlProperty(localName = "Prenom")
-  private String Prenom;
+  private String prenom;
 
   @JsonProperty("dateNaissance")
   @JacksonXmlProperty(localName = "dateNaissance")
@@ -50,18 +50,18 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
 
   @JsonProperty("Pays")
   @JacksonXmlProperty(localName = "Pays")
-  private String Pays;
+  private String pays;
 
   @JsonProperty("Ville")
   @JacksonXmlProperty(localName = "Ville")
-  private String Ville;
+  private String ville;
 
   @JsonProperty("Adresse")
   @JacksonXmlProperty(localName = "Adresse")
-  private String Adresse;
+  private String adresse;
 
-  @JsonProperty("planning")
-  @JacksonXmlProperty(localName = "planning")
+  @JsonProperty("Planning")
+  @JacksonXmlProperty(localName = "Planning")
   @Valid
   private List<Planning> planning = null;
 
@@ -125,24 +125,24 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     this.nomFamille = nomFamille;
   }
 
-  public Patient Prenom(String Prenom) {
-    this.Prenom = Prenom;
+  public Patient prenom(String prenom) {
+    this.prenom = prenom;
     return this;
   }
 
   /**
-   * Prenom.
-   * @return Prenom
+   * prenom.
+   * @return prenom
   */
-  @ApiModelProperty(value = "Prenom.")
+  @ApiModelProperty(value = "prenom.")
 
 
   public String getPrenom() {
-    return Prenom;
+    return prenom;
   }
 
-  public void setPrenom(String Prenom) {
-    this.Prenom = Prenom;
+  public void setPrenom(String prenom) {
+    this.prenom = prenom;
   }
 
   public Patient dateNaissance(Date dateNaissance) {
@@ -165,64 +165,64 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     this.dateNaissance = dateNaissance;
   }
 
-  public Patient Pays(String Pays) {
-    this.Pays = Pays;
+  public Patient pays(String pays) {
+    this.pays = pays;
     return this;
   }
 
   /**
-   * Pays
-   * @return Pays
+   * pays
+   * @return pays
   */
-  @ApiModelProperty(value = "Pays")
+  @ApiModelProperty(value = "pays")
 
 
   public String getPays() {
-    return Pays;
+    return pays;
   }
 
-  public void setPays(String Pays) {
-    this.Pays = Pays;
+  public void setPays(String pays) {
+    this.pays = pays;
   }
 
-  public Patient Ville(String Ville) {
-    this.Ville = Ville;
+  public Patient ville(String ville) {
+    this.ville = ville;
     return this;
   }
 
   /**
-   * Ville
-   * @return Ville
+   * ville
+   * @return ville
   */
-  @ApiModelProperty(value = "Ville")
+  @ApiModelProperty(value = "ville")
 
 
   public String getVille() {
-    return Ville;
+    return ville;
   }
 
-  public void setVille(String Ville) {
-    this.Ville = Ville;
+  public void setVille(String ville) {
+    this.ville = ville;
   }
 
-  public Patient Adresse(String Adresse) {
-    this.Adresse = Adresse;
+  public Patient adresse(String adresse) {
+    this.adresse = adresse;
     return this;
   }
 
   /**
-   * Adresse
-   * @return Adresse
+   * adresse
+   * @return adresse
   */
-  @ApiModelProperty(value = "Adresse")
+  @ApiModelProperty(value = "adresse")
 
 
   public String getAdresse() {
-    return Adresse;
+    return adresse;
   }
 
-  public void setAdresse(String Adresse) {
-    this.Adresse = Adresse;
+  public void setAdresse(String adresse) {
+    this.adresse = adresse;
   }
 
   public Patient planning(List<Planning> planning) {
@@ -267,17 +267,17 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     return Objects.equals(this.idPatient, patient.idPatient) &&
         Objects.equals(this.numeroNational, patient.numeroNational) &&
         Objects.equals(this.nomFamille, patient.nomFamille) &&
-        Objects.equals(this.Prenom, patient.Prenom) &&
+        Objects.equals(this.prenom, patient.prenom) &&
         Objects.equals(this.dateNaissance, patient.dateNaissance) &&
-        Objects.equals(this.Pays, patient.Pays) &&
-        Objects.equals(this.Ville, patient.Ville) &&
-        Objects.equals(this.Adresse, patient.Adresse) &&
+        Objects.equals(this.pays, patient.pays) &&
+        Objects.equals(this.ville, patient.ville) &&
+        Objects.equals(this.adresse, patient.adresse) &&
         Objects.equals(this.planning, patient.planning);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idPatient, numeroNational, nomFamille, Prenom, dateNaissance, Pays, Ville, Adresse, planning);
+    return Objects.hash(idPatient, numeroNational, nomFamille, prenom, dateNaissance, pays, ville, adresse, planning);
   }
 
   @Override
@@ -288,11 +288,11 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     sb.append("    idPatient: ").append(toIndentedString(idPatient)).append("\n");
     sb.append("    numeroNational: ").append(toIndentedString(numeroNational)).append("\n");
     sb.append("    nomFamille: ").append(toIndentedString(nomFamille)).append("\n");
-    sb.append("    Prenom: ").append(toIndentedString(Prenom)).append("\n");
+    sb.append("    prenom: ").append(toIndentedString(prenom)).append("\n");
     sb.append("    dateNaissance: ").append(toIndentedString(dateNaissance)).append("\n");
-    sb.append("    Pays: ").append(toIndentedString(Pays)).append("\n");
-    sb.append("    Ville: ").append(toIndentedString(Ville)).append("\n");
-    sb.append("    Adresse: ").append(toIndentedString(Adresse)).append("\n");
+    sb.append("    pays: ").append(toIndentedString(pays)).append("\n");
+    sb.append("    ville: ").append(toIndentedString(ville)).append("\n");
+    sb.append("    adresse: ").append(toIndentedString(adresse)).append("\n");
     sb.append("    planning: ").append(toIndentedString(planning)).append("\n");
     sb.append("}");
     return sb.toString();

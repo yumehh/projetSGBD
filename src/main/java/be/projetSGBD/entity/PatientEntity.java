@@ -1,9 +1,9 @@
 package be.projetSGBD.entity;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.Column;
+import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,14 +22,14 @@ public class PatientEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long idPatient;
+	private long idPatient;
 	String numeroNational;
 	String nomFamille;
-	String Prenom;
+	String prenom;
 	Date dateNaissance;
-	String Pays;
-	String Ville;
-	String Adresse;
+	String pays;
+	String ville;
+	String adresse;
 	
 	@ManyToOne
 	@JoinColumn(name="idCentreVaccination")
@@ -40,5 +40,9 @@ public class PatientEntity {
 	private AssociationEntity association;
 	
 	@ManyToMany(mappedBy = "patient")
-	Set<PlanningEntity> planning;
+	List<PlanningEntity> planning;
 }
+
+
+
+

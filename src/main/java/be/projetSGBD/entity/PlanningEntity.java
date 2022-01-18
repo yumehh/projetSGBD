@@ -1,10 +1,9 @@
 package be.projetSGBD.entity;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -31,7 +29,7 @@ public class PlanningEntity {
 	@JoinTable(
 			name="PatientPlanning",
 			joinColumns= {@JoinColumn(name="idPlanning")},
-			inverseJoinColumns = {@JoinColumn(name="idPatient")})
-	Set<PatientEntity> patient;
+			inverseJoinColumns = {@JoinColumn(name="patient_id")})
+	List<PatientEntity> patient;
 	
 }

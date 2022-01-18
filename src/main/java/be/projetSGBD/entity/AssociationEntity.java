@@ -1,5 +1,6 @@
 package be.projetSGBD.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -21,9 +22,11 @@ public class AssociationEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long idAssociation;
 	
-	@OneToMany(mappedBy = "association")
-	private Set<PatientEntity> patient;
+	String zone;
 	
 	@OneToMany(mappedBy = "association")
-	private Set<CentreVaccinationEntity> centreVaccination;
+	private List<PatientEntity> patient;
+	
+	@OneToMany(mappedBy = "association")
+	private List<CentreVaccinationEntity> centreVaccination;
 }

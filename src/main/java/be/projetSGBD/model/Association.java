@@ -32,6 +32,10 @@ public class Association extends RepresentationModel<Association>  implements Se
   @JacksonXmlProperty(localName = "idAssociation")
   private Long idAssociation;
 
+  @JsonProperty("zone")
+  @JacksonXmlProperty(localName = "zone")
+  private String zone;
+
   @JsonProperty("patient")
   @JacksonXmlProperty(localName = "patient")
   @Valid
@@ -60,6 +64,26 @@ public class Association extends RepresentationModel<Association>  implements Se
 
   public void setIdAssociation(Long idAssociation) {
     this.idAssociation = idAssociation;
+  }
+
+  public Association zone(String zone) {
+    this.zone = zone;
+    return this;
+  }
+
+  /**
+   * zone de localite
+   * @return zone
+  */
+  @ApiModelProperty(value = "zone de localite")
+
+
+  public String getZone() {
+    return zone;
+  }
+
+  public void setZone(String zone) {
+    this.zone = zone;
   }
 
   public Association patient(List<Patient> patient) {
@@ -131,13 +155,14 @@ public class Association extends RepresentationModel<Association>  implements Se
     }
     Association association = (Association) o;
     return Objects.equals(this.idAssociation, association.idAssociation) &&
+        Objects.equals(this.zone, association.zone) &&
         Objects.equals(this.patient, association.patient) &&
         Objects.equals(this.centreVaccination, association.centreVaccination);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idAssociation, patient, centreVaccination);
+    return Objects.hash(idAssociation, zone, patient, centreVaccination);
   }
 
   @Override
@@ -146,6 +171,7 @@ public class Association extends RepresentationModel<Association>  implements Se
     sb.append("class Association {\n");
     
     sb.append("    idAssociation: ").append(toIndentedString(idAssociation)).append("\n");
+    sb.append("    zone: ").append(toIndentedString(zone)).append("\n");
     sb.append("    patient: ").append(toIndentedString(patient)).append("\n");
     sb.append("    centreVaccination: ").append(toIndentedString(centreVaccination)).append("\n");
     sb.append("}");

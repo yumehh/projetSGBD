@@ -60,7 +60,10 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 	
 	public Vaccin toModel(VaccinEntity ve) {
 		Vaccin v = new Vaccin();
-		v.idVaccin(ve.getIdVaccin()).nbsJoursEntreDoses(ve.getNbsJoursEntreDoses()).nomVaccin(ve.getNomVaccin()).numeroLot(ve.getNumeroLot());
+		v.idVaccin(ve.getIdVaccin())
+		.nbsJoursEntreDoses(ve.getNbsJoursEntreDoses())
+		.nomVaccin(ve.getNomVaccin())
+		.numeroLot(ve.getNumeroLot());
 		return v;
 	}
 	
@@ -69,11 +72,11 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		p.idPatient(pe.getIdPatient())
 		.numeroNational(pe.getNumeroNational())
 		.nomFamille((pe.getNomFamille()))
-		.Prenom(pe.getPrenom())
+		.prenom(pe.getPrenom())
 		.dateNaissance(pe.getDateNaissance())
-		.Pays(pe.getPays())
-		.Ville(pe.getVille())
-		.Adresse(pe.getAdresse());
+		.pays(pe.getPays())
+		.ville(pe.getVille())
+		.adresse(pe.getAdresse());
 		return p;
 	}
 
@@ -123,7 +126,4 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		cve.setPlanning(model.getPlanning());
 		return cve;
 	}
-
-
-
 }

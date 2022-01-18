@@ -22,7 +22,7 @@ public class PatientEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idPatient;
+	long idPatient;
 	String numeroNational;
 	String nomFamille;
 	String prenom;
@@ -33,11 +33,11 @@ public class PatientEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="idCentreVaccination")
-	private CentreVaccinationEntity centreVaccination;
+	CentreVaccinationEntity centreVaccination;
 	
 	@ManyToOne
 	@JoinColumn(name="idAssociation")
-	private AssociationEntity association;
+	AssociationEntity association;
 	
 	@ManyToMany(mappedBy = "patient")
 	List<PlanningEntity> planning;

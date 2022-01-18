@@ -90,7 +90,7 @@ public interface VaccinApi {
         @ApiResponse(code = 404, message = "Given user ID doesn't exist") })
     @RequestMapping(value = "/api/v1/vaccin/{idVaccin}",
         method = RequestMethod.GET)
-    default ResponseEntity<Vaccin> getVaccinByIdVaccin(@ApiParam(value = "vaccin Identifier",required=true) @PathVariable("idVaccin") Integer idVaccin) {
+    default ResponseEntity<Vaccin> getVaccinByIdVaccin(@ApiParam(value = "vaccin Identifier",required=true) @PathVariable("idVaccin") Long idVaccin) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

@@ -29,6 +29,6 @@ public class VaccinEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "idCentreVaccination")
-	private CentreVaccinationEntity centreVaccination;
+	CentreVaccinationEntity centreVaccination;
 	
 }

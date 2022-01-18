@@ -25,8 +25,8 @@ public class AssociationEntity {
 	String zone;
 	
 	@OneToMany(mappedBy = "association")
-	private List<PatientEntity> patient;
+	List<PatientEntity> patient;
 	
 	@OneToMany(mappedBy = "association")
-	private List<CentreVaccinationEntity> centreVaccination;
+	List<CentreVaccinationEntity> centreVaccination;
 }

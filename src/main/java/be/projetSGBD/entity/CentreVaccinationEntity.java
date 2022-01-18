@@ -31,13 +31,13 @@ public class CentreVaccinationEntity {
 	String planning;
 	
 	@OneToMany(mappedBy = "centreVaccination")
-	private List<PatientEntity> patient;
+	List<PatientEntity> patient;
 	
 	@OneToMany(mappedBy = "centreVaccination")
-	private List<VaccinEntity> vaccin;
+	List<VaccinEntity> vaccin;
 	
 	@ManyToOne
 	@JoinColumn(name="idAssociation") 
-	private AssociationEntity association;
+	AssociationEntity association;
 	
 }

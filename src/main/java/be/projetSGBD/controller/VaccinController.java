@@ -56,7 +56,7 @@ public class VaccinController implements VaccinApi {
 	}
 
 	@Override
-	public ResponseEntity<Vaccin> getVaccinByIdVaccin(Integer idVaccin) {
+	public ResponseEntity<Vaccin> getVaccinByIdVaccin(Long idVaccin) {
 		// TODO Auto-generated method stub
 		//return VaccinApi.super.getVaccinByIdVaccin(idVaccin);
 		return vaccinService.vaccinByIdVaccin(idVaccin).map(assembler::toModel)

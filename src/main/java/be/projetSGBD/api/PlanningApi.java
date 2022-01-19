@@ -50,7 +50,7 @@ public interface PlanningApi {
     @RequestMapping(value = "/api/v1/addPlanning",
         consumes = { "application/xml", "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Void> createPlanning(@ApiParam(value = "Planning object"  )  @Valid @RequestBody(required = false) Planning planning) {
+    default ResponseEntity<Planning> createPlanning(@ApiParam(value = "Planning object"  )  @Valid @RequestBody(required = false) Planning planning) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -70,7 +70,7 @@ public interface PlanningApi {
         @ApiResponse(code = 404, message = "Given user ID doesn't exist") })
     @RequestMapping(value = "/api/v1/planning/{idPlanning}",
         method = RequestMethod.DELETE)
-    default ResponseEntity<Void> deletePlanning(@ApiParam(value = "Planning id",required=true) @PathVariable("idPlanning") BigDecimal idPlanning) {
+    default ResponseEntity<Void> deletePlanning(@ApiParam(value = "Planning id",required=true) @PathVariable("idPlanning") long idPlanning) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -90,7 +90,7 @@ public interface PlanningApi {
         @ApiResponse(code = 404, message = "Given user ID doesn't exist") })
     @RequestMapping(value = "/api/v1/planning/{idPlanning}",
         method = RequestMethod.GET)
-    default ResponseEntity<Void> getPlanningByIdPlanning(@ApiParam(value = "Planning Identifier",required=true) @PathVariable("idPlanning") Integer idPlanning) {
+    default ResponseEntity<Planning> getPlanningByIdPlanning(@ApiParam(value = "Planning Identifier",required=true) @PathVariable("idPlanning") long idPlanning) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

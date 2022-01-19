@@ -20,6 +20,7 @@ import be.projetSGBD.hateoas.PatientRepresentationModelAssembler;
 import be.projetSGBD.hateoas.VaccinRepresentationModelAssembler;
 import be.projetSGBD.model.CentreVaccination;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.Vaccin;
 import be.projetSGBD.service.CentreVaccinationService;
 import be.projetSGBD.service.PatientService;
 import be.projetSGBD.service.VaccinService;
@@ -77,11 +78,14 @@ public class CentreVaccinationController implements CentreVaccinationApi {
 	
 	
 	
-	public ResponseEntity<List<Patient>> getPatientByIdCentreVaccination(String idCentreVaccination){
+	public ResponseEntity<List<Patient>> getPatientByIdCentreVaccination(Long idCentreVaccination){
 		
 		return ok(Collections.EMPTY_LIST);
 		
 	}
 	
+	public ResponseEntity<List<Vaccin>>getVaccinByIdCentreVaccination(Long idCentreVaccination){
+		return ok(Collections.EMPTY_LIST);
+	}
 	
 }

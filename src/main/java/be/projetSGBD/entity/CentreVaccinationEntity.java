@@ -1,5 +1,6 @@
 package be.projetSGBD.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "CentreVaccination")
+@Table(name="CentreVaccination")
 @Data
 public class CentreVaccinationEntity {
 	
@@ -28,13 +29,16 @@ public class CentreVaccinationEntity {
 	String localite;
 	String adresse;
 	String heureOuverture;
-	String planning;
 	
+
 	@OneToMany(mappedBy = "centreVaccination")
 	List<PatientEntity> patient;
 	
 	@OneToMany(mappedBy = "centreVaccination")
 	List<VaccinEntity> vaccin;
+	
+	@OneToMany(mappedBy = "centreVaccination")
+	List<PlanningEntity> planning;
 	
 	@ManyToOne
 	@JoinColumn(name="idAssociation") 

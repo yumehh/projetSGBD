@@ -29,7 +29,8 @@ public class CentreVaccinationRepresentationModelAssembler extends Representatio
 		
 		resource.idCentreVaccination(entity.getIdCentreVaccination())
 			.patient(centreService.toModelListPatient(entity.getPatient()))
-			.vaccin(centreService.toModelList(entity.getVaccin()));
+			.vaccin(centreService.toModelList(entity.getVaccin()))
+			.planning(centreService.toModelListPlanning(entity.getPlanning()));
 		
 		resource.add(linkTo(methodOn(CentreVaccinationController.class).getCentreVaccinationByIdCentreVaccination(entity.getIdCentreVaccination())).withSelfRel());
 		

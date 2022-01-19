@@ -40,6 +40,10 @@ public class Vaccin extends RepresentationModel<Vaccin>  implements Serializable
   @JacksonXmlProperty(localName = "numeroLot")
   private Integer numeroLot;
 
+  @JsonProperty("idCentreVaccination")
+  @JacksonXmlProperty(localName = "idCentreVaccination")
+  private Long idCentreVaccination;
+
   public Vaccin idVaccin(Long idVaccin) {
     this.idVaccin = idVaccin;
     return this;
@@ -120,6 +124,26 @@ public class Vaccin extends RepresentationModel<Vaccin>  implements Serializable
     this.numeroLot = numeroLot;
   }
 
+  public Vaccin idCentreVaccination(Long idCentre) {
+    this.idCentreVaccination = idCentre;
+    return this;
+  }
+
+  /**
+   * fk
+   * @return idCentreVaccination
+  */
+  @ApiModelProperty(value = "fk")
+
+
+  public Long getIdCentreVaccination() {
+    return idCentreVaccination;
+  }
+
+  public void setIdCentreVaccination(Long idCentreVaccination) {
+    this.idCentreVaccination = idCentreVaccination;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -133,12 +157,13 @@ public class Vaccin extends RepresentationModel<Vaccin>  implements Serializable
     return Objects.equals(this.idVaccin, vaccin.idVaccin) &&
         Objects.equals(this.nomVaccin, vaccin.nomVaccin) &&
         Objects.equals(this.nbsJoursEntreDoses, vaccin.nbsJoursEntreDoses) &&
-        Objects.equals(this.numeroLot, vaccin.numeroLot);
+        Objects.equals(this.numeroLot, vaccin.numeroLot) &&
+        Objects.equals(this.idCentreVaccination, vaccin.idCentreVaccination);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idVaccin, nomVaccin, nbsJoursEntreDoses, numeroLot);
+    return Objects.hash(idVaccin, nomVaccin, nbsJoursEntreDoses, numeroLot, idCentreVaccination);
   }
 
   @Override
@@ -150,6 +175,7 @@ public class Vaccin extends RepresentationModel<Vaccin>  implements Serializable
     sb.append("    nomVaccin: ").append(toIndentedString(nomVaccin)).append("\n");
     sb.append("    nbsJoursEntreDoses: ").append(toIndentedString(nbsJoursEntreDoses)).append("\n");
     sb.append("    numeroLot: ").append(toIndentedString(numeroLot)).append("\n");
+    sb.append("    idCentreVaccination: ").append(toIndentedString(idCentreVaccination)).append("\n");
     sb.append("}");
     return sb.toString();
   }

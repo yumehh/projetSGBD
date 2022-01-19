@@ -36,19 +36,25 @@ public class VaccinServiceImpl implements VaccinService {
 		v.idVaccin(ve.getIdVaccin())
 			.nomVaccin(ve.getNomVaccin())
 			.nbsJoursEntreDoses(ve.getNbsJoursEntreDoses())
-			.numeroLot(ve.getNumeroLot());
+			.numeroLot(ve.getNumeroLot())
+			.idCentreVaccination(ve.getCentreVaccination().getIdCentreVaccination());
 		return v;
 	}
 
 	@Override
-	public VaccinEntity createVaccin(String nomVaccin, int dureeEntreDoses, int numeroLot) {
+	public VaccinEntity createVaccin(String nomVaccin, int dureeEntreDoses, int numeroLot, Long idCentre) {
 		VaccinEntity ve = new VaccinEntity();
+		CentreVaccinationEntity cve = new CentreVaccinationEntity();
+		
+		cve.setIdCentreVaccination(idCentre);
 		ve.setNomVaccin(nomVaccin);
 		ve.setNbsJoursEntreDoses(dureeEntreDoses);
 		ve.setNumeroLot(numeroLot);
-		return this.vaccinRepo.save(ve);
+		ve.setCentreVaccination(cve);
+		return vaccinRepo.save(ve);
 	}
 
+	
 	@Override
 	public void deleteVaccin(long idVaccin) {
 		this.vaccinRepo.deleteById(idVaccin);
@@ -64,10 +70,19 @@ public class VaccinServiceImpl implements VaccinService {
 		return ve;
 	}
 
+/*
 	@Override
 	public VaccinEntity createVaccin(VaccinEntity ve) {
-		// TODO Auto-generated method stub
+		VaccinEntity entity = new VaccinEntity();
+		CentreVaccinationEntity cve = new CentreVaccinationEntity();
+		
+		cve.setIdCentreVaccination(5);
+		ve.setCentreVaccination(cve);
+		
+		System.out.println(ve);
+		System.out.println("idCentreVaccination : " + ve.getCentreVaccination().getIdCentreVaccination());
+		
 		return vaccinRepo.save(ve);
 	}
-
+*/
 }

@@ -28,6 +28,11 @@ public class VaccinRepresentationModelAssembler extends RepresentationModelAssem
 		Vaccin resource = createModelWithId(entity.getIdVaccin(), entity);
 		BeanUtils.copyProperties(entity, resource);
 		
+		resource.idVaccin(entity.getIdVaccin())
+			.nbsJoursEntreDoses(entity.getNbsJoursEntreDoses())
+			.numeroLot(entity.getNumeroLot())
+			.idCentreVaccination(entity.getCentreVaccination().getIdCentreVaccination());
+		
 		resource.add(linkTo(methodOn(VaccinController.class).getVaccinByIdVaccin(entity.getIdVaccin())).withSelfRel());
 
 		

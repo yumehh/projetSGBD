@@ -13,9 +13,11 @@ import org.springframework.stereotype.Service;
 
 import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PatientEntity;
+import be.projetSGBD.entity.PlanningEntity;
 import be.projetSGBD.entity.VaccinEntity;
 import be.projetSGBD.model.CentreVaccination;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.Planning;
 import be.projetSGBD.model.Vaccin;
 import be.projetSGBD.repository.CentreVaccinationRepository;
 
@@ -47,6 +49,12 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		CentreVaccinationEntity cve = this.centreRepo.findById(idCentreVaccination).get();
 		return cve.getVaccin();
 	}
+	
+	@Override
+	public List<PlanningEntity> planningByCentreVaccinationId(long idCentreVaccination) {
+		CentreVaccinationEntity cve = this.centreRepo.findById(idCentreVaccination).get();
+		return cve.getPlanning();
+	}
 
 	@Override
 	public CentreVaccination toModel(CentreVaccinationEntity centreVaccination) {
@@ -63,7 +71,8 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		v.idVaccin(ve.getIdVaccin())
 		.nbsJoursEntreDoses(ve.getNbsJoursEntreDoses())
 		.nomVaccin(ve.getNomVaccin())
-		.numeroLot(ve.getNumeroLot());
+		.numeroLot(ve.getNumeroLot())
+		.idCentreVaccination(ve.getCentreVaccination().getIdCentreVaccination());
 		return v;
 	}
 	
@@ -77,6 +86,14 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		.pays(pe.getPays())
 		.ville(pe.getVille())
 		.adresse(pe.getAdresse());
+		return p;
+	}
+	
+	public Planning toModel(PlanningEntity pe) {
+		Planning p = new Planning();
+		p.setIdPlanning(pe.getIdPlanning());
+		p.setDateRdv(pe.getDateRdv());
+		//p.setCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination());
 		return p;
 	}
 
@@ -116,6 +133,14 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		}
 		   return list.stream().map(e -> toModel(e)).collect(toList());
 	}
+	
+	@Override
+	public List<Planning> toModelListPlanning(List<PlanningEntity> list) {
+		if (Objects.isNull(list)) {
+			return Collections.emptyList();
+		}
+			return list.stream().map(e -> toModel(e)).collect(toList());
+	}
 
 	@Override
 	public CentreVaccinationEntity toEntity(CentreVaccination model) {
@@ -123,7 +148,7 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		cve.setAdresse(model.getAdresse());
 		cve.setHeureOuverture(model.getHeureOuverture());
 		cve.setLocalite(model.getLocalite());
-		cve.setPlanning(model.getPlanning());
 		return cve;
 	}
+
 }

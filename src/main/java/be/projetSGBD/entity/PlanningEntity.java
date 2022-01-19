@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -32,4 +33,7 @@ public class PlanningEntity {
 			inverseJoinColumns = {@JoinColumn(name="patient_id")})
 	List<PatientEntity> patient;
 	
+	@ManyToOne
+	@JoinColumn(name="idCentreVaccination")
+	CentreVaccinationEntity centreVaccination;
 }

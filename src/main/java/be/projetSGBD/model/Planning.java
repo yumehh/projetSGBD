@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
@@ -34,7 +35,7 @@ public class Planning extends RepresentationModel<Planning>  implements Serializ
 
   @JsonProperty("dateRdv")
   @JacksonXmlProperty(localName = "dateRdv")
-  private String dateRdv;
+  private Date dateRdv;
 
   @JsonProperty("patient")
   @JacksonXmlProperty(localName = "patient")
@@ -66,7 +67,7 @@ public class Planning extends RepresentationModel<Planning>  implements Serializ
     this.idPlanning = idPlanning;
   }
 
-  public Planning dateRdv(String dateRdv) {
+  public Planning dateRdv(Date dateRdv) {
     this.dateRdv = dateRdv;
     return this;
   }
@@ -78,11 +79,11 @@ public class Planning extends RepresentationModel<Planning>  implements Serializ
   @ApiModelProperty(value = "date de rdv")
 
 
-  public String getDateRdv() {
+  public Date getDateRdv() {
     return dateRdv;
   }
 
-  public void setDateRdv(String dateRdv) {
+  public void setDateRdv(Date dateRdv) {
     this.dateRdv = dateRdv;
   }
 

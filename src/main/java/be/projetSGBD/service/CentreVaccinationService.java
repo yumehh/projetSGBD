@@ -6,9 +6,11 @@ import java.util.Set;
 
 import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PatientEntity;
+import be.projetSGBD.entity.PlanningEntity;
 import be.projetSGBD.entity.VaccinEntity;
 import be.projetSGBD.model.CentreVaccination;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.Planning;
 import be.projetSGBD.model.Vaccin;
 
 public interface CentreVaccinationService {
@@ -18,6 +20,8 @@ public interface CentreVaccinationService {
 	public List<PatientEntity> patientByCentreVaccinationId(long idCentreVaccination);
 	
 	public List<VaccinEntity> vaccinByCentreVaccinationId(long idCentreVaccination);
+	
+	public List<PlanningEntity> planningByCentreVaccinationId(long idCentreVaccination);
 	
 	public CentreVaccination toModel(CentreVaccinationEntity centreVaccination);
 	
@@ -30,6 +34,8 @@ public interface CentreVaccinationService {
 	public List<Vaccin> toModelList(List<VaccinEntity> list);
 	
 	public List<Patient> toModelListPatient(List<PatientEntity> list);
+	
+	public List<Planning> toModelListPlanning(List<PlanningEntity> list);
 	
 	public CentreVaccinationEntity toEntity(CentreVaccination model);
 }

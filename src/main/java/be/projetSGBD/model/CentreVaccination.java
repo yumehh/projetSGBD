@@ -2,6 +2,7 @@ package be.projetSGBD.model;
 
 import java.util.Objects;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.Planning;
 import be.projetSGBD.model.Vaccin;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -44,10 +45,6 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
   @JacksonXmlProperty(localName = "heureOuverture")
   private String heureOuverture;
 
-  @JsonProperty("planning")
-  @JacksonXmlProperty(localName = "planning")
-  private String planning;
-
   @JsonProperty("patient")
   @JacksonXmlProperty(localName = "patient")
   @Valid
@@ -57,6 +54,11 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
   @JacksonXmlProperty(localName = "vaccin")
   @Valid
   private List<Vaccin> vaccin = null;
+
+  @JsonProperty("planning")
+  @JacksonXmlProperty(localName = "planning")
+  @Valid
+  private List<Planning> planning = null;
 
   public CentreVaccination idCentreVaccination(Long idCentreVaccination) {
     this.idCentreVaccination = idCentreVaccination;
@@ -138,26 +140,6 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
     this.heureOuverture = heureOuverture;
   }
 
-  public CentreVaccination planning(String planning) {
-    this.planning = planning;
-    return this;
-  }
-
-  /**
-   * planning
-   * @return planning
-  */
-  @ApiModelProperty(value = "planning")
-
-
-  public String getPlanning() {
-    return planning;
-  }
-
-  public void setPlanning(String planning) {
-    this.planning = planning;
-  }
-
   public CentreVaccination patient(List<Patient> patient) {
     this.patient = patient;
     return this;
@@ -216,6 +198,35 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
     this.vaccin = vaccin;
   }
 
+  public CentreVaccination planning(List<Planning> planning) {
+    this.planning = planning;
+    return this;
+  }
+
+  public CentreVaccination addPlanningItem(Planning planningItem) {
+    if (this.planning == null) {
+      this.planning = new ArrayList<>();
+    }
+    this.planning.add(planningItem);
+    return this;
+  }
+
+  /**
+   * Collection of vaccin
+   * @return planning
+  */
+  @ApiModelProperty(value = "Collection of vaccin")
+
+  @Valid
+
+  public List<Planning> getPlanning() {
+    return planning;
+  }
+
+  public void setPlanning(List<Planning> planning) {
+    this.planning = planning;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -230,14 +241,14 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
         Objects.equals(this.localite, centreVaccination.localite) &&
         Objects.equals(this.adresse, centreVaccination.adresse) &&
         Objects.equals(this.heureOuverture, centreVaccination.heureOuverture) &&
-        Objects.equals(this.planning, centreVaccination.planning) &&
         Objects.equals(this.patient, centreVaccination.patient) &&
-        Objects.equals(this.vaccin, centreVaccination.vaccin);
+        Objects.equals(this.vaccin, centreVaccination.vaccin) &&
+        Objects.equals(this.planning, centreVaccination.planning);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idCentreVaccination, localite, adresse, heureOuverture, planning, patient, vaccin);
+    return Objects.hash(idCentreVaccination, localite, adresse, heureOuverture, patient, vaccin, planning);
   }
 
   @Override
@@ -249,9 +260,9 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
     sb.append("    localite: ").append(toIndentedString(localite)).append("\n");
     sb.append("    adresse: ").append(toIndentedString(adresse)).append("\n");
     sb.append("    heureOuverture: ").append(toIndentedString(heureOuverture)).append("\n");
-    sb.append("    planning: ").append(toIndentedString(planning)).append("\n");
     sb.append("    patient: ").append(toIndentedString(patient)).append("\n");
     sb.append("    vaccin: ").append(toIndentedString(vaccin)).append("\n");
+    sb.append("    planning: ").append(toIndentedString(planning)).append("\n");
     sb.append("}");
     return sb.toString();
   }

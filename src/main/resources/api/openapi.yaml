@@ -394,9 +394,6 @@ components:
         heureOuverture:
           description: heure d'ouverture
           type: string
-        planning:
-          description: planning
-          type: string
         patient:
           description: Collection of patient
           type: array
@@ -407,6 +404,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Vaccin'
+        planning:
+          description: Collection of vaccin
+          type: array
+          items:
+            $ref: '#/components/schemas/Planning'    
     Vaccin:
       description: a Vaccin class
       type: object
@@ -423,6 +425,9 @@ components:
           type: integer
         numeroLot:
           description: le numero de lot
+          type: integer
+        idCentreVaccination:
+          description : fk
           type: integer
     Association:
       description: a Association class
@@ -460,10 +465,5 @@ components:
           description: a collection of patient
           type: array
           items:
-            $ref: '#/components/schemas/Patient'  
-        centreVaccination:
-          description: a collection of CentreVaccination
-          type: array
-          items:
-            $ref: '#/components/schemas/CentreVaccination'  
+            $ref: '#/components/schemas/Patient'
             

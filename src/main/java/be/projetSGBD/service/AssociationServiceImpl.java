@@ -71,8 +71,7 @@ public class AssociationServiceImpl implements AssociationService {
 		cv.idCentreVaccination(cve.getIdCentreVaccination())
 		.localite(cve.getLocalite())
 		.adresse(cve.getAdresse())
-		.heureOuverture(cve.getHeureOuverture())
-		.planning(cve.getPlanning());
+		.heureOuverture(cve.getHeureOuverture());
 		return cv;
 	}
 

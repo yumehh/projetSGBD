@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PatientEntity;
 import be.projetSGBD.model.Patient;
 import be.projetSGBD.repository.PatientRepository;
@@ -13,7 +14,6 @@ import be.projetSGBD.repository.PatientRepository;
 public class PatientServiceImpl implements PatientService {
 
 	private PatientRepository patientRepo;
-	
 	
 	
 	public PatientServiceImpl(PatientRepository patientRepo) {
@@ -38,14 +38,18 @@ public class PatientServiceImpl implements PatientService {
 		.dateNaissance(pe.getDateNaissance())
 		.pays(pe.getPays())
 		.ville(pe.getVille())
-		.adresse(pe.getAdresse());
+		.adresse(pe.getAdresse())
+		.idCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination());
 		return p;
 	}
 
 	@Override
 	public PatientEntity createPatient(String numeroNational, String nomFamille, String prenom, Date dateNaissance,
-			String pays, String ville, String adresse) {
+			String pays, String ville, String adresse, Long idCentre) {
 		PatientEntity pe = new PatientEntity();
+		CentreVaccinationEntity cve = new CentreVaccinationEntity();
+		
+		cve.setIdCentreVaccination(idCentre);
 		pe.setNumeroNational(numeroNational);
 		pe.setNomFamille(nomFamille);
 		pe.setPrenom(prenom);
@@ -53,7 +57,9 @@ public class PatientServiceImpl implements PatientService {
 		pe.setPays(pays);
 		pe.setVille(ville);
 		pe.setAdresse(adresse);
-		return pe;
+		pe.setCentreVaccination(cve);
+		
+		return patientRepo.save(pe);
 	}
 
 	@Override

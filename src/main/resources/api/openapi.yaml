@@ -377,6 +377,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Planning'
+        idCentreVaccination:
+          description : fk
+          type: integer    
     CentreVaccination:
       description: a CentreVaccination Class
       type: object
@@ -461,6 +464,9 @@ components:
         dateRdv:
           description: date de rdv
           type: string
+        idCentreVaccination:
+          description : fk
+          type: integer  
         patient:
           description: a collection of patient
           type: array

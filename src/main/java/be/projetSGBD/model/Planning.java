@@ -1,10 +1,11 @@
 package be.projetSGBD.model;
 
 import java.util.Objects;
-import be.projetSGBD.model.CentreVaccination;
 import be.projetSGBD.model.Patient;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -35,17 +36,17 @@ public class Planning extends RepresentationModel<Planning>  implements Serializ
 
   @JsonProperty("dateRdv")
   @JacksonXmlProperty(localName = "dateRdv")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
   private Date dateRdv;
+
+  @JsonProperty("idCentreVaccination")
+  @JacksonXmlProperty(localName = "idCentreVaccination")
+  private Long idCentreVaccination;
 
   @JsonProperty("patient")
   @JacksonXmlProperty(localName = "patient")
   @Valid
   private List<Patient> patient = null;
-
-  @JsonProperty("centreVaccination")
-  @JacksonXmlProperty(localName = "centreVaccination")
-  @Valid
-  private List<CentreVaccination> centreVaccination = null;
 
   public Planning idPlanning(Long idPlanning) {
     this.idPlanning = idPlanning;
@@ -87,6 +88,26 @@ public class Planning extends RepresentationModel<Planning>  implements Serializ
     this.dateRdv = dateRdv;
   }
 
+  public Planning idCentreVaccination(Long idCentreVaccination) {
+    this.idCentreVaccination = idCentreVaccination;
+    return this;
+  }
+
+  /**
+   * fk
+   * @return idCentreVaccination
+  */
+  @ApiModelProperty(value = "fk")
+
+
+  public Long getIdCentreVaccination() {
+    return idCentreVaccination;
+  }
+
+  public void setIdCentreVaccination(Long idCentreVaccination) {
+    this.idCentreVaccination = idCentreVaccination;
+  }
+
   public Planning patient(List<Patient> patient) {
     this.patient = patient;
     return this;
@@ -116,35 +137,6 @@ public class Planning extends RepresentationModel<Planning>  implements Serializ
     this.patient = patient;
   }
 
-  public Planning centreVaccination(List<CentreVaccination> centreVaccination) {
-    this.centreVaccination = centreVaccination;
-    return this;
-  }
-
-  public Planning addCentreVaccinationItem(CentreVaccination centreVaccinationItem) {
-    if (this.centreVaccination == null) {
-      this.centreVaccination = new ArrayList<>();
-    }
-    this.centreVaccination.add(centreVaccinationItem);
-    return this;
-  }
-
-  /**
-   * a collection of CentreVaccination
-   * @return centreVaccination
-  */
-  @ApiModelProperty(value = "a collection of CentreVaccination")
-
-  @Valid
-
-  public List<CentreVaccination> getCentreVaccination() {
-    return centreVaccination;
-  }
-
-  public void setCentreVaccination(List<CentreVaccination> centreVaccination) {
-    this.centreVaccination = centreVaccination;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -157,13 +149,13 @@ public class Planning extends RepresentationModel<Planning>  implements Serializ
     Planning planning = (Planning) o;
     return Objects.equals(this.idPlanning, planning.idPlanning) &&
         Objects.equals(this.dateRdv, planning.dateRdv) &&
-        Objects.equals(this.patient, planning.patient) &&
-        Objects.equals(this.centreVaccination, planning.centreVaccination);
+        Objects.equals(this.idCentreVaccination, planning.idCentreVaccination) &&
+        Objects.equals(this.patient, planning.patient);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idPlanning, dateRdv, patient, centreVaccination);
+    return Objects.hash(idPlanning, dateRdv, idCentreVaccination, patient);
   }
 
   @Override
@@ -173,8 +165,8 @@ public class Planning extends RepresentationModel<Planning>  implements Serializ
     
     sb.append("    idPlanning: ").append(toIndentedString(idPlanning)).append("\n");
     sb.append("    dateRdv: ").append(toIndentedString(dateRdv)).append("\n");
+    sb.append("    idCentreVaccination: ").append(toIndentedString(idCentreVaccination)).append("\n");
     sb.append("    patient: ").append(toIndentedString(patient)).append("\n");
-    sb.append("    centreVaccination: ").append(toIndentedString(centreVaccination)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -14,7 +14,7 @@ public interface PlanningService {
 	
 	public Planning toModel(PlanningEntity pe);
 	
-	public PlanningEntity createPlanning(Date dateRdv);
+	public PlanningEntity createPlanning(Date dateRdv, Long idCentre);
 	
 	public PlanningEntity createPlanning(PlanningEntity pe);
 	
@@ -22,5 +22,5 @@ public interface PlanningService {
 	
 	public PlanningEntity toEntity(Planning model);
 	
-	public Set<Planning> toModelList(List<PlanningEntity> list);
+	public List<Planning> toModelList(List<PlanningEntity> list);
 }

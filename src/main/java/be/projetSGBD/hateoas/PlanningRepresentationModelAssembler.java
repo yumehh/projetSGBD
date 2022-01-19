@@ -28,7 +28,8 @@ public class PlanningRepresentationModelAssembler extends RepresentationModelAss
 		BeanUtils.copyProperties(entity, resource);
 		
 		resource.idPlanning(entity.getIdPlanning())
-			.dateRdv(entity.getDateRdv());
+			.dateRdv(entity.getDateRdv())
+			.idCentreVaccination(entity.getCentreVaccination().getIdCentreVaccination());
 		
 		resource.add(linkTo(methodOn(PlanningController.class).getPlanningByIdPlanning(entity.getIdPlanning())).withSelfRel());
 

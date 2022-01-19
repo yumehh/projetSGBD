@@ -62,7 +62,8 @@ public class VaccinController implements VaccinApi {
 	public ResponseEntity<Vaccin> getVaccinByIdVaccin(Long idVaccin) {
 		// TODO Auto-generated method stub
 		//return VaccinApi.super.getVaccinByIdVaccin(idVaccin);
-		return vaccinService.vaccinByIdVaccin(idVaccin).map(assembler::toModel)
+		return vaccinService.vaccinByIdVaccin(idVaccin)
+				.map(assembler::toModel)
 					.map(ResponseEntity::ok).orElse(notFound().build());
 	}
 	

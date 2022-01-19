@@ -13,6 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Entity
@@ -31,6 +34,8 @@ public class PatientEntity {
 	String ville;
 	String adresse;
 	
+
+
 	@ManyToOne
 	@JoinColumn(name="idCentreVaccination")
 	CentreVaccinationEntity centreVaccination;

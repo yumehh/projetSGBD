@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Entity
@@ -24,6 +26,8 @@ public class PlanningEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long idPlanning;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	Date dateRdv;
 	
 	@ManyToMany(cascade = {CascadeType.ALL})

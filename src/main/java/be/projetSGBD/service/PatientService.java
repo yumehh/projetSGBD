@@ -19,7 +19,8 @@ public interface PatientService {
 			Date dateNaissance,
 			String pays,
 			String ville,
-			String adresse
+			String adresse, 
+			Long idCentre
 			);
 	
 	public PatientEntity createPatient(PatientEntity pe);

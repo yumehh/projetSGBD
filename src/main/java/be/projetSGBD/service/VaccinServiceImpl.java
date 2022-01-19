@@ -51,6 +51,7 @@ public class VaccinServiceImpl implements VaccinService {
 		ve.setNbsJoursEntreDoses(dureeEntreDoses);
 		ve.setNumeroLot(numeroLot);
 		ve.setCentreVaccination(cve);
+		
 		return vaccinRepo.save(ve);
 	}
 

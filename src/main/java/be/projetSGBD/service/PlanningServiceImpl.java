@@ -1,5 +1,6 @@
 package be.projetSGBD.service;
 
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
 import java.util.Collections;
@@ -13,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PlanningEntity;
 import be.projetSGBD.model.Planning;
 import be.projetSGBD.repository.PlanningRepository;
@@ -40,15 +42,21 @@ public class PlanningServiceImpl implements PlanningService {
 	public Planning toModel(PlanningEntity pe) {
 		Planning p = new Planning();
 		p.idPlanning(pe.getIdPlanning())
-			.dateRdv(pe.getDateRdv());
+			.dateRdv(pe.getDateRdv())
+			.idCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination());
 		return p;
 	}
 
 	@Override
-	public PlanningEntity createPlanning(Date dateRdv) {
+	public PlanningEntity createPlanning(Date dateRdv, Long idCentre) {
 		PlanningEntity pe = new PlanningEntity();
+		CentreVaccinationEntity cve = new CentreVaccinationEntity();
+		
+		cve.setIdCentreVaccination(idCentre);
 		pe.setDateRdv(dateRdv);
-		return this.planningRepo.save(pe);
+		pe.setCentreVaccination(cve);
+		
+		return planningRepo.save(pe);
 	}
 
 	@Override
@@ -71,11 +79,11 @@ public class PlanningServiceImpl implements PlanningService {
 	}
 
 	@Override
-	public Set<Planning> toModelList(List<PlanningEntity> list) {
+	public List<Planning> toModelList(List<PlanningEntity> list) {
 		if (Objects.isNull(list)) {
-			return Collections.emptySet();
+			return Collections.emptyList();
 		}
-		return list.stream().map(e -> toModel(e)).collect(toSet());
+		return list.stream().map(e -> toModel(e)).collect(toList());
 	}
 
 }

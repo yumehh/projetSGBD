@@ -65,6 +65,10 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
   @Valid
   private List<Planning> planning = null;
 
+  @JsonProperty("idCentreVaccination")
+  @JacksonXmlProperty(localName = "idCentreVaccination")
+  private Long idCentreVaccination;
+
   public Patient idPatient(Long idPatient) {
     this.idPatient = idPatient;
     return this;
@@ -254,6 +258,26 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     this.planning = planning;
   }
 
+  public Patient idCentreVaccination(Long idCentreVaccination) {
+    this.idCentreVaccination = idCentreVaccination;
+    return this;
+  }
+
+  /**
+   * fk
+   * @return idCentreVaccination
+  */
+  @ApiModelProperty(value = "fk")
+
+
+  public Long getIdCentreVaccination() {
+    return idCentreVaccination;
+  }
+
+  public void setIdCentreVaccination(Long idCentreVaccination) {
+    this.idCentreVaccination = idCentreVaccination;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -272,12 +296,13 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
         Objects.equals(this.pays, patient.pays) &&
         Objects.equals(this.ville, patient.ville) &&
         Objects.equals(this.adresse, patient.adresse) &&
-        Objects.equals(this.planning, patient.planning);
+        Objects.equals(this.planning, patient.planning) &&
+        Objects.equals(this.idCentreVaccination, patient.idCentreVaccination);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idPatient, numeroNational, nomFamille, prenom, dateNaissance, pays, ville, adresse, planning);
+    return Objects.hash(idPatient, numeroNational, nomFamille, prenom, dateNaissance, pays, ville, adresse, planning, idCentreVaccination);
   }
 
   @Override
@@ -294,6 +319,7 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     sb.append("    ville: ").append(toIndentedString(ville)).append("\n");
     sb.append("    adresse: ").append(toIndentedString(adresse)).append("\n");
     sb.append("    planning: ").append(toIndentedString(planning)).append("\n");
+    sb.append("    idCentreVaccination: ").append(toIndentedString(idCentreVaccination)).append("\n");
     sb.append("}");
     return sb.toString();
   }

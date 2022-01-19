@@ -48,7 +48,9 @@ public class PlanningController implements PlanningApi {
 	public ResponseEntity<Planning> createPlanning(@Valid Planning planning) {
 		// TODO Auto-generated method stub
 		//return PlanningApi.super.createPlanning(planning);
-		return Optional.of(planningService.createPlanning(planningService.toEntity(planning))).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		//return Optional.of(planningService.createPlanning(planningService.toEntity(planning))).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		return Optional.of(planningService.createPlanning(planning.getDateRdv(), planning.getIdCentreVaccination())).map(assembler::toModel)
+				.map(ResponseEntity::ok).orElse(notFound().build());
 	}
 
 
@@ -63,7 +65,9 @@ public class PlanningController implements PlanningApi {
 	public ResponseEntity<Planning> getPlanningByIdPlanning(long idPlanning) {
 		// TODO Auto-generated method stub
 		//return PlanningApi.super.getPlanningByIdPlanning(idPlanning);
-		return planningService.planningById(idPlanning).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		return planningService.planningById(idPlanning)
+				.map(assembler::toModel)
+					.map(ResponseEntity::ok).orElse(notFound().build());
 	}
 	
 	

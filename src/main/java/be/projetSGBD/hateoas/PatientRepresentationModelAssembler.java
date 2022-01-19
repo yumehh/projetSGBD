@@ -27,7 +27,15 @@ public class PatientRepresentationModelAssembler extends RepresentationModelAsse
 		Patient resource = createModelWithId(entity.getIdPatient(), entity);
 		BeanUtils.copyProperties(entity, resource);
 		
-		resource.idPatient(entity.getIdPatient());
+		resource.idPatient(entity.getIdPatient())
+		.numeroNational(entity.getNumeroNational())
+		.nomFamille(entity.getNomFamille())
+		.prenom(entity.getPrenom())
+		.dateNaissance(entity.getDateNaissance())
+		.pays(entity.getPays())
+		.ville(entity.getVille())
+		.adresse(entity.getAdresse())
+		.idCentreVaccination(entity.getCentreVaccination().getIdCentreVaccination());
 		
 		resource.add(linkTo(methodOn(PatientController.class).getPatientByIdPatient(entity.getIdPatient())).withSelfRel());
 

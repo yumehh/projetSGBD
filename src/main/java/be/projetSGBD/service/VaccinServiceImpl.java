@@ -72,11 +72,11 @@ public class VaccinServiceImpl implements VaccinService {
 
 /*
 	@Override
-	public VaccinEntity createVaccin(VaccinEntity ve) {
+	public VaccinEntity createVaccin(VaccinEntity ve, Long idCentre) {
 		VaccinEntity entity = new VaccinEntity();
 		CentreVaccinationEntity cve = new CentreVaccinationEntity();
 		
-		cve.setIdCentreVaccination(5);
+		cve.setIdCentreVaccination(idCentre);
 		ve.setCentreVaccination(cve);
 		
 		System.out.println(ve);

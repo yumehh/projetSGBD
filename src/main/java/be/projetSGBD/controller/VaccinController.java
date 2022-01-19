@@ -45,11 +45,8 @@ public class VaccinController implements VaccinApi {
 	public ResponseEntity<Vaccin> createVaccin(@Valid Vaccin vaccin) {
 		// TODO Auto-generated method stub
 		//return VaccinApi.super.createVaccin(vaccin);
-		//return Optional.of(vaccinService.createVaccin(vaccinService.toEntity(vaccin)))
+		//return Optional.of(vaccinService.createVaccin(vaccinService.toEntity(vaccin), vaccin.getIdCentreVaccination()))
 			//	.map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
-		
-		//return Optional.of(vaccinService.createVaccin(vaccin.getNomVaccin(), vaccin.getNbsJoursEntreDoses(), vaccin.getNumeroLot(), vaccinService.toEntity(vaccin)))
-			//		.map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
 		
 		return Optional.of(vaccinService.createVaccin(vaccin.getNomVaccin(), vaccin.getNbsJoursEntreDoses(), vaccin.getNumeroLot(), vaccin.getIdCentreVaccination()))
 				.map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());

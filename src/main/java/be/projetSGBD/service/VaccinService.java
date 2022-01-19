@@ -18,6 +18,6 @@ public interface VaccinService {
 	
 	public VaccinEntity toEntity(Vaccin model);
 	
-	//public VaccinEntity createVaccin(VaccinEntity ve);
+	//public VaccinEntity createVaccin(VaccinEntity ve, Long idCentre);
 
 }

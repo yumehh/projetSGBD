@@ -1,16 +1,17 @@
 package be.projetSGBD.service;
 
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
+
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
+
 
 import org.springframework.stereotype.Service;
 
+import be.projetSGBD.entity.AssociationEntity;
 import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PatientEntity;
 import be.projetSGBD.entity.PlanningEntity;
@@ -93,16 +94,19 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		Planning p = new Planning();
 		p.setIdPlanning(pe.getIdPlanning());
 		p.setDateRdv(pe.getDateRdv());
-		//p.setCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination());
 		return p;
 	}
 
 	@Override
-	public CentreVaccinationEntity createCentre(String localite, String adresse, String heureOuverture) {
+	public CentreVaccinationEntity createCentre(String localite, String adresse, String heureOuverture, Long idAssociation) {
 		CentreVaccinationEntity cve = new CentreVaccinationEntity();
+		AssociationEntity ae = new AssociationEntity();
+		
+		ae.setIdAssociation(idAssociation);
 		cve.setAdresse(adresse);
 		cve.setLocalite(localite);
 		cve.setHeureOuverture(heureOuverture);
+		cve.setAssociation(ae);
 		return cve;
 	}
 

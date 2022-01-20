@@ -41,7 +41,7 @@ public class CentreVaccinationEntity {
 	List<PlanningEntity> planning;
 	
 	@ManyToOne
-	@JoinColumn(name="idAssociation") 
+	@JoinColumn(name="idAssociation", nullable = false) 
 	AssociationEntity association;
 	
 }

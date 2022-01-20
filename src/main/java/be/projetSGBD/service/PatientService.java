@@ -20,7 +20,8 @@ public interface PatientService {
 			String pays,
 			String ville,
 			String adresse, 
-			Long idCentre
+			Long idCentre,
+			Long idAssociation
 			);
 	
 	public PatientEntity createPatient(PatientEntity pe);

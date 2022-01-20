@@ -2,7 +2,6 @@ package be.projetSGBD.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PatientEntity;
@@ -25,7 +24,7 @@ public interface CentreVaccinationService {
 	
 	public CentreVaccination toModel(CentreVaccinationEntity centreVaccination);
 	
-	public CentreVaccinationEntity createCentre(String localite, String adresse, String heureOuverture);
+	public CentreVaccinationEntity createCentre(String localite, String adresse, String heureOuverture, Long idAssociation);
 	
 	public CentreVaccinationEntity createCentre(CentreVaccinationEntity entity);
 	

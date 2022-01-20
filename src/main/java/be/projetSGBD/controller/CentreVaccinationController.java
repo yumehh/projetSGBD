@@ -59,14 +59,16 @@ public class CentreVaccinationController implements CentreVaccinationApi {
 	@Override
 	public ResponseEntity<CentreVaccination> createCentreVaccination(@Valid CentreVaccination centreVaccination) {
 		// TODO Auto-generated method stub
-		return Optional.of(centreService.createCentre(centreService.toEntity(centreVaccination))).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		//return Optional.of(centreService.createCentre(centreService.toEntity(centreVaccination))).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		return Optional.of(centreService.createCentre(centreVaccination.getAdresse(), centreVaccination.getLocalite(), centreVaccination.getHeureOuverture(), centreVaccination.getIdAssociation()))
+					.map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
 	}
 
 
 	@Override
 	public ResponseEntity<Void> deleteCentreVaccination(Long idCentreVaccination) {
 		this.centreService.deleteCentre(idCentreVaccination);
-		return new ResponseEntity(HttpStatus.OK);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
 

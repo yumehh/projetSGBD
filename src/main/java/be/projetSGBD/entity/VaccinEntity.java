@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "VACCIN")
+@Table(name = "Vaccin")
 @Data
 public class VaccinEntity {
 

@@ -35,7 +35,8 @@ public class PatientRepresentationModelAssembler extends RepresentationModelAsse
 		.pays(entity.getPays())
 		.ville(entity.getVille())
 		.adresse(entity.getAdresse())
-		.idCentreVaccination(entity.getCentreVaccination().getIdCentreVaccination());
+		.idCentreVaccination(entity.getCentreVaccination().getIdCentreVaccination())
+		.idAssociation(entity.getAssociation().getIdAssociation());
 		
 		resource.add(linkTo(methodOn(PatientController.class).getPatientByIdPatient(entity.getIdPatient())).withSelfRel());
 

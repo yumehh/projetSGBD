@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import be.projetSGBD.entity.AssociationEntity;
 import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PatientEntity;
 import be.projetSGBD.model.Patient;
@@ -45,11 +46,14 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public PatientEntity createPatient(String numeroNational, String nomFamille, String prenom, Date dateNaissance,
-			String pays, String ville, String adresse, Long idCentre) {
+			String pays, String ville, String adresse, Long idCentre, Long idAssociation) {
 		PatientEntity pe = new PatientEntity();
 		CentreVaccinationEntity cve = new CentreVaccinationEntity();
+		AssociationEntity ae = new AssociationEntity();
 		
 		cve.setIdCentreVaccination(idCentre);
+		ae.setIdAssociation(idAssociation);
+		
 		pe.setNumeroNational(numeroNational);
 		pe.setNomFamille(nomFamille);
 		pe.setPrenom(prenom);
@@ -58,6 +62,7 @@ public class PatientServiceImpl implements PatientService {
 		pe.setVille(ville);
 		pe.setAdresse(adresse);
 		pe.setCentreVaccination(cve);
+		pe.setAssociation(ae);
 		
 		return patientRepo.save(pe);
 	}

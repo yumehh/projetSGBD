@@ -379,7 +379,10 @@ components:
             $ref: '#/components/schemas/Planning'
         idCentreVaccination:
           description : fk
-          type: integer    
+          type: integer
+        idAssociation:
+          description : fk
+          type: integer  
     CentreVaccination:
       description: a CentreVaccination Class
       type: object
@@ -397,6 +400,9 @@ components:
         heureOuverture:
           description: heure d'ouverture
           type: string
+        idAssociation:
+          description : fk
+          type: integer
         patient:
           description: Collection of patient
           type: array

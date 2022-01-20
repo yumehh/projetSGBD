@@ -69,6 +69,10 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
   @JacksonXmlProperty(localName = "idCentreVaccination")
   private Long idCentreVaccination;
 
+  @JsonProperty("idAssociation")
+  @JacksonXmlProperty(localName = "idAssociation")
+  private Long idAssociation;
+
   public Patient idPatient(Long idPatient) {
     this.idPatient = idPatient;
     return this;
@@ -278,6 +282,26 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     this.idCentreVaccination = idCentreVaccination;
   }
 
+  public Patient idAssociation(Long idAssociation) {
+    this.idAssociation = idAssociation;
+    return this;
+  }
+
+  /**
+   * fk
+   * @return idAssociation
+  */
+  @ApiModelProperty(value = "fk")
+
+
+  public Long getIdAssociation() {
+    return idAssociation;
+  }
+
+  public void setIdAssociation(Long idAssociation) {
+    this.idAssociation = idAssociation;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -297,12 +321,13 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
         Objects.equals(this.ville, patient.ville) &&
         Objects.equals(this.adresse, patient.adresse) &&
         Objects.equals(this.planning, patient.planning) &&
-        Objects.equals(this.idCentreVaccination, patient.idCentreVaccination);
+        Objects.equals(this.idCentreVaccination, patient.idCentreVaccination) &&
+        Objects.equals(this.idAssociation, patient.idAssociation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idPatient, numeroNational, nomFamille, prenom, dateNaissance, pays, ville, adresse, planning, idCentreVaccination);
+    return Objects.hash(idPatient, numeroNational, nomFamille, prenom, dateNaissance, pays, ville, adresse, planning, idCentreVaccination, idAssociation);
   }
 
   @Override
@@ -320,6 +345,7 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     sb.append("    adresse: ").append(toIndentedString(adresse)).append("\n");
     sb.append("    planning: ").append(toIndentedString(planning)).append("\n");
     sb.append("    idCentreVaccination: ").append(toIndentedString(idCentreVaccination)).append("\n");
+    sb.append("    idAssociation: ").append(toIndentedString(idAssociation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

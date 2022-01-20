@@ -45,6 +45,10 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
   @JacksonXmlProperty(localName = "heureOuverture")
   private String heureOuverture;
 
+  @JsonProperty("idAssociation")
+  @JacksonXmlProperty(localName = "idAssociation")
+  private Long idAssociation;
+
   @JsonProperty("patient")
   @JacksonXmlProperty(localName = "patient")
   @Valid
@@ -138,6 +142,26 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
 
   public void setHeureOuverture(String heureOuverture) {
     this.heureOuverture = heureOuverture;
+  }
+
+  public CentreVaccination idAssociation(Long idAssociation) {
+    this.idAssociation = idAssociation;
+    return this;
+  }
+
+  /**
+   * fk
+   * @return idAssociation
+  */
+  @ApiModelProperty(value = "fk")
+
+
+  public Long getIdAssociation() {
+    return idAssociation;
+  }
+
+  public void setIdAssociation(Long idAssociation) {
+    this.idAssociation = idAssociation;
   }
 
   public CentreVaccination patient(List<Patient> patient) {
@@ -241,6 +265,7 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
         Objects.equals(this.localite, centreVaccination.localite) &&
         Objects.equals(this.adresse, centreVaccination.adresse) &&
         Objects.equals(this.heureOuverture, centreVaccination.heureOuverture) &&
+        Objects.equals(this.idAssociation, centreVaccination.idAssociation) &&
         Objects.equals(this.patient, centreVaccination.patient) &&
         Objects.equals(this.vaccin, centreVaccination.vaccin) &&
         Objects.equals(this.planning, centreVaccination.planning);
@@ -248,7 +273,7 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
 
   @Override
   public int hashCode() {
-    return Objects.hash(idCentreVaccination, localite, adresse, heureOuverture, patient, vaccin, planning);
+    return Objects.hash(idCentreVaccination, localite, adresse, heureOuverture, idAssociation, patient, vaccin, planning);
   }
 
   @Override
@@ -260,6 +285,7 @@ public class CentreVaccination extends RepresentationModel<CentreVaccination>  i
     sb.append("    localite: ").append(toIndentedString(localite)).append("\n");
     sb.append("    adresse: ").append(toIndentedString(adresse)).append("\n");
     sb.append("    heureOuverture: ").append(toIndentedString(heureOuverture)).append("\n");
+    sb.append("    idAssociation: ").append(toIndentedString(idAssociation)).append("\n");
     sb.append("    patient: ").append(toIndentedString(patient)).append("\n");
     sb.append("    vaccin: ").append(toIndentedString(vaccin)).append("\n");
     sb.append("    planning: ").append(toIndentedString(planning)).append("\n");

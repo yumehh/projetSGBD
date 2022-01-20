@@ -39,7 +39,17 @@ public class PatientController implements PatientApi {
 
 	@Override
 	public ResponseEntity<Patient> createPatient(@Valid Patient patient) {
-		return Optional.of(patientService.createPatient(patientService.toEntity(patient))).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		//return Optional.of(patientService.createPatient(patientService.toEntity(patient))).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		return Optional.of(patientService.createPatient(
+					patient.getNumeroNational(), 
+					patient.getNomFamille(),
+					patient.getPrenom(), 
+					patient.getDateNaissance(), 
+					patient.getPays(),
+					patient.getVille(),
+					patient.getAdresse(), 
+					patient.getIdCentreVaccination(), 
+					patient.getIdAssociation())).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
 		
 	}
 

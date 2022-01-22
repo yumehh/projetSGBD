@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import be.projetSGBD.entity.CentreVaccinationEntity;
+import be.projetSGBD.entity.PatientEntity;
 import be.projetSGBD.entity.PlanningEntity;
 import be.projetSGBD.model.Planning;
 import be.projetSGBD.repository.PlanningRepository;
@@ -24,7 +25,6 @@ public class PlanningServiceImpl implements PlanningService {
 	
 	private static final Logger log = LoggerFactory.getLogger(PlanningServiceImpl.class);
 
-	
 	public PlanningServiceImpl(PlanningRepository planningRepo) {
 		super();
 		this.planningRepo = planningRepo;
@@ -41,7 +41,8 @@ public class PlanningServiceImpl implements PlanningService {
 		Planning p = new Planning();
 		p.idPlanning(pe.getIdPlanning())
 			.dateRdv(pe.getDateRdv())
-			.idCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination());
+			.idCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination())
+			;
 		return p;
 	}
 
@@ -49,7 +50,7 @@ public class PlanningServiceImpl implements PlanningService {
 	public PlanningEntity createPlanning(Date dateRdv, Long idCentre) {
 		PlanningEntity pe = new PlanningEntity();
 		CentreVaccinationEntity cve = new CentreVaccinationEntity();
-		
+
 		cve.setIdCentreVaccination(idCentre);
 		pe.setDateRdv(dateRdv);
 		pe.setCentreVaccination(cve);

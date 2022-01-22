@@ -1,6 +1,7 @@
 package be.projetSGBD.service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import be.projetSGBD.entity.PatientEntity;
@@ -29,4 +30,6 @@ public interface PatientService {
 	public void deletePatient(long idPatient);
 	
 	public PatientEntity toEntity(Patient model);
+	
+	public List<Patient> toModelListPatient(List<PatientEntity> list);
 }

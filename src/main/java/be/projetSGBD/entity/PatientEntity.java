@@ -34,8 +34,6 @@ public class PatientEntity {
 	String ville;
 	String adresse;
 	
-
-
 	@ManyToOne
 	@JoinColumn(name="idCentreVaccination")
 	CentreVaccinationEntity centreVaccination;
@@ -46,6 +44,7 @@ public class PatientEntity {
 	
 	@ManyToMany(mappedBy = "patient")
 	List<PlanningEntity> planning;
+	
 }
 
 

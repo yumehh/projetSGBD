@@ -14,6 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.NativeWebRequest;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import be.projetSGBD.api.CentreVaccinationApi;
 import be.projetSGBD.hateoas.CentreVaccinationRepresentationModelAssembler;
 import be.projetSGBD.hateoas.PatientRepresentationModelAssembler;
@@ -36,6 +39,7 @@ public class CentreVaccinationController implements CentreVaccinationApi {
 	private VaccinRepresentationModelAssembler vaccinAssembler;
 	
 
+	//@JsonCreator
 	public CentreVaccinationController(CentreVaccinationService centreService, PatientService patientService,
 			VaccinService vaccinService, CentreVaccinationRepresentationModelAssembler assembler,
 			PatientRepresentationModelAssembler patientAssembler, VaccinRepresentationModelAssembler vaccinAssembler) {

@@ -34,7 +34,7 @@ public class PlanningEntity {
 	@JoinTable(
 			name="PatientPlanning",
 			joinColumns= {@JoinColumn(name="idPlanning")},
-			inverseJoinColumns = {@JoinColumn(name="patient_id")})
+			inverseJoinColumns = {@JoinColumn(name="idPatient")})
 	List<PatientEntity> patient;
 	
 	@ManyToOne

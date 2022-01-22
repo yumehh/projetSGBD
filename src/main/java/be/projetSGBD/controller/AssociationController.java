@@ -59,7 +59,10 @@ public class AssociationController implements AssociationApi {
 	@Override
 	public ResponseEntity<Association> createAssociation(@Valid Association association) {
 		// TODO Auto-generated method stub
-		return Optional.of(associationService.createAssociation(associationService.toEntity(association))).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		//return Optional.of(associationService.createAssociation(associationService.toEntity(association))).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
+		return Optional.of(associationService.createAssociation(association.getIdAssociation(), association.getZone()))
+				.map(assembler::toModel)
+					.map(ResponseEntity::ok).orElse(notFound().build());
 	}
 
 	@Override

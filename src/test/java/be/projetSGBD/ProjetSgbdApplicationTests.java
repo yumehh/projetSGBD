@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import be.projetSGBD.repository.CentreVaccinationRepository;
 import be.projetSGBD.repository.PatientRepository;
 import be.projetSGBD.repository.VaccinRepository;
 
@@ -21,9 +22,13 @@ class ProjetSgbdApplicationTests {
 	@Autowired
 	VaccinRepository vaccinRepo;
 	
+	@Autowired
+	CentreVaccinationRepository centreRepo;
+	
 	@Test
 	void contextLoads() {
 	}
+	
 	
 	@Test
 	void testDB(){
@@ -38,6 +43,15 @@ class ProjetSgbdApplicationTests {
 	void testGetVaccin() {
 		vaccinRepo.findAll().forEach(s ->{
 			log.info("getVaccin : " + s.getNomVaccin());
+		});
+	}
+	
+	
+	
+	@Test
+	void testCentre() {
+		centreRepo.findAll().forEach(e ->{
+			log.info("localité : " + e.getLocalite());
 		});
 	}
 }

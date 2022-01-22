@@ -50,6 +50,8 @@ public class AssociationServiceImpl implements AssociationService {
 	public Association toModel(AssociationEntity association) {
 		Association a = new Association();
 		a.setIdAssociation(association.getIdAssociation());
+		a.setZone(association.getZone());
+		
 		return a;
 	}
 	
@@ -115,6 +117,7 @@ public class AssociationServiceImpl implements AssociationService {
 	public AssociationEntity toEntity(Association model) {
 		AssociationEntity ae = new AssociationEntity();
 		ae.setIdAssociation(model.getIdAssociation());
+		ae.setZone(model.getZone());
 		return ae;
 	}
 

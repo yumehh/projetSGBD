@@ -1,6 +1,11 @@
 package be.projetSGBD.service;
 
+import static java.util.stream.Collectors.toList;
+
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -8,15 +13,16 @@ import org.springframework.stereotype.Service;
 import be.projetSGBD.entity.AssociationEntity;
 import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PatientEntity;
+import be.projetSGBD.entity.PlanningEntity;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.Planning;
 import be.projetSGBD.repository.PatientRepository;
 
 @Service
 public class PatientServiceImpl implements PatientService {
 
 	private PatientRepository patientRepo;
-	
-	
+
 	public PatientServiceImpl(PatientRepository patientRepo) {
 		super();
 		this.patientRepo = patientRepo;
@@ -47,6 +53,7 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public PatientEntity createPatient(String numeroNational, String nomFamille, String prenom, Date dateNaissance,
 			String pays, String ville, String adresse, Long idCentre, Long idAssociation) {
+		
 		PatientEntity pe = new PatientEntity();
 		CentreVaccinationEntity cve = new CentreVaccinationEntity();
 		AssociationEntity ae = new AssociationEntity();
@@ -90,6 +97,15 @@ public class PatientServiceImpl implements PatientService {
 		pe.setVille(model.getVille());
 		pe.setAdresse(model.getAdresse());
 		return pe;
+	}
+
+
+	@Override
+	public List<Patient> toModelListPatient(List<PatientEntity> list) {
+		if (Objects.isNull(list)) {
+			return Collections.emptyList();
+		}
+			return list.stream().map(e -> toModel(e)).collect(toList());
 	}
 
 }

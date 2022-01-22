@@ -1,7 +1,10 @@
 package be.projetSGBD.controller;
 
 import static org.springframework.http.ResponseEntity.notFound;
+import static org.springframework.http.ResponseEntity.ok;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -11,9 +14,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.NativeWebRequest;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import be.projetSGBD.api.PatientApi;
 import be.projetSGBD.hateoas.PatientRepresentationModelAssembler;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.Planning;
 import be.projetSGBD.service.PatientService;
 
 @RestController
@@ -21,7 +28,6 @@ public class PatientController implements PatientApi {
 
 	private PatientService patientService;
 	private PatientRepresentationModelAssembler assembler;
-	
 	
 	public PatientController(PatientService patientService, PatientRepresentationModelAssembler assembler) {
 		super();
@@ -48,7 +54,7 @@ public class PatientController implements PatientApi {
 					patient.getPays(),
 					patient.getVille(),
 					patient.getAdresse(), 
-					patient.getIdCentreVaccination(), 
+					patient.getIdCentreVaccination(),
 					patient.getIdAssociation())).map(assembler::toModel).map(ResponseEntity::ok).orElse(notFound().build());
 		
 	}
@@ -67,5 +73,10 @@ public class PatientController implements PatientApi {
 	}
 	
 	
+	public ResponseEntity<List<Planning>> getPlanningByPatientId(Long idPatient){
+		
+		return ok(Collections.emptyList());
+		
+	}
 	
 }

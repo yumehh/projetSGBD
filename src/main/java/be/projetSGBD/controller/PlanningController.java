@@ -21,6 +21,7 @@ import be.projetSGBD.api.PlanningApi;
 import be.projetSGBD.hateoas.PatientRepresentationModelAssembler;
 import be.projetSGBD.hateoas.PlanningRepresentationModelAssembler;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.PatientPlanning;
 import be.projetSGBD.model.Planning;
 import be.projetSGBD.service.PatientService;
 import be.projetSGBD.service.PlanningService;
@@ -78,6 +79,11 @@ public class PlanningController implements PlanningApi {
 	}
 	
 	public ResponseEntity<List<Patient>> getPatientByPlanningId(Long idPlanning){
+		
+		return ok(Collections.emptyList());
+	}
+	
+public ResponseEntity<List<PatientPlanning>> getPlanningByIdPatientPlanning(Long idPlanning){
 		
 		return ok(Collections.emptyList());
 	}

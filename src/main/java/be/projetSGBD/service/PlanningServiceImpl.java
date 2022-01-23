@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 
 import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PatientEntity;
+import be.projetSGBD.entity.PatientPlanningEntity;
 import be.projetSGBD.entity.PlanningEntity;
+import be.projetSGBD.model.PatientPlanning;
 import be.projetSGBD.model.Planning;
 import be.projetSGBD.repository.PlanningRepository;
 
@@ -35,6 +37,12 @@ public class PlanningServiceImpl implements PlanningService {
 		Optional<PlanningEntity> pe = planningRepo.findById(idPlanning);
 		return pe;
 	}
+	
+	@Override
+	public List<PatientPlanningEntity> PatientPlanningByPlanningId(long idPlanning) {
+		PlanningEntity pe = this.planningRepo.findById(idPlanning).get();
+		return pe.getPatientPlanning();
+	}
 
 	@Override
 	public Planning toModel(PlanningEntity pe) {
@@ -44,6 +52,13 @@ public class PlanningServiceImpl implements PlanningService {
 			.idCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination())
 			;
 		return p;
+	}
+	
+	public PatientPlanning toModel(PatientPlanningEntity ppe) {
+		PatientPlanning pp = new PatientPlanning();
+		pp.idPatientPlanning(ppe.getIdPatientPlanning())
+		.idPlanning(ppe.getPlanning().getIdPlanning());
+		return pp;
 	}
 
 	@Override
@@ -83,6 +98,14 @@ public class PlanningServiceImpl implements PlanningService {
 			return Collections.emptyList();
 		}
 		return list.stream().map(e -> toModel(e)).collect(toList());
+	}
+	
+	@Override
+	public List<PatientPlanning> toModelListPatientPlanningPlanning(List<PatientPlanningEntity> list) {
+		if (Objects.isNull(list)) {
+			return Collections.emptyList();
+		}
+		   return list.stream().map(e -> toModel(e)).collect(toList());
 	}
 
 }

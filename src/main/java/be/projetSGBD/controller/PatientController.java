@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import be.projetSGBD.api.PatientApi;
 import be.projetSGBD.hateoas.PatientRepresentationModelAssembler;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.PatientPlanning;
 import be.projetSGBD.model.Planning;
 import be.projetSGBD.service.PatientService;
 
@@ -77,6 +78,11 @@ public class PatientController implements PatientApi {
 		
 		return ok(Collections.emptyList());
 		
+	}
+	
+	public ResponseEntity<List<PatientPlanning>> getPatientByIdPatientPlanning(Long idPatient){
+		
+		return ok(Collections.emptyList());
 	}
 	
 }

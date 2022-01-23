@@ -52,6 +52,9 @@ public class VaccinServiceImpl implements VaccinService {
 		ve.setNumeroLot(numeroLot);
 		ve.setCentreVaccination(cve);
 		
+		System.out.println(ve);
+		System.out.println("idCentreVaccination : " + ve.getCentreVaccination().getIdCentreVaccination());
+		
 		return vaccinRepo.save(ve);
 	}
 

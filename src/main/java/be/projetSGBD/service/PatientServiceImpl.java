@@ -13,8 +13,10 @@ import org.springframework.stereotype.Service;
 import be.projetSGBD.entity.AssociationEntity;
 import be.projetSGBD.entity.CentreVaccinationEntity;
 import be.projetSGBD.entity.PatientEntity;
+import be.projetSGBD.entity.PatientPlanningEntity;
 import be.projetSGBD.entity.PlanningEntity;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.PatientPlanning;
 import be.projetSGBD.model.Planning;
 import be.projetSGBD.repository.PatientRepository;
 
@@ -49,6 +51,16 @@ public class PatientServiceImpl implements PatientService {
 		.idCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination());
 		return p;
 	}
+	
+	
+	public PatientPlanning toModel(PatientPlanningEntity ppe) {
+		PatientPlanning pp = new PatientPlanning();
+		pp.idPatientPlanning(ppe.getIdPatientPlanning())
+			.idPatient(ppe.getPatient().getIdPatient());
+		
+		return pp;
+	}
+
 
 	@Override
 	public PatientEntity createPatient(String numeroNational, String nomFamille, String prenom, Date dateNaissance,
@@ -99,7 +111,6 @@ public class PatientServiceImpl implements PatientService {
 		return pe;
 	}
 
-
 	@Override
 	public List<Patient> toModelListPatient(List<PatientEntity> list) {
 		if (Objects.isNull(list)) {
@@ -108,4 +119,19 @@ public class PatientServiceImpl implements PatientService {
 			return list.stream().map(e -> toModel(e)).collect(toList());
 	}
 
+
+	@Override
+	public List<PatientPlanningEntity> PatientPlanningByPatientId(long idPatient) {
+		PatientEntity pe = this.patientRepo.findById(idPatient).get();
+		return pe.getPatientPlanning();
+	}
+
+
+	@Override
+	public List<PatientPlanning> toModelListPatientPlanningPatient(List<PatientPlanningEntity> list) {
+		if (Objects.isNull(list)) {
+			return Collections.emptyList();
+		}
+		   return list.stream().map(e -> toModel(e)).collect(toList());
+	}
 }

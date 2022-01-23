@@ -37,6 +37,7 @@ public class PlanningRepresentationModelAssembler extends RepresentationModelAss
 		resource.idPlanning(entity.getIdPlanning())
 			.dateRdv(entity.getDateRdv())
 			.idCentreVaccination(entity.getCentreVaccination().getIdCentreVaccination())
+			.patientPlanning(planningService.toModelListPatientPlanningPlanning(entity.getPatientPlanning()))
 			.patient(patientService.toModelListPatient(entity.getPatient()).stream().collect(Collectors.toList()));
 			;
 		

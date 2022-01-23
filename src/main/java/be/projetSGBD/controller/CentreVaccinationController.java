@@ -86,12 +86,13 @@ public class CentreVaccinationController implements CentreVaccinationApi {
 	
 	public ResponseEntity<List<Patient>> getPatientByIdCentreVaccination(Long idCentreVaccination){
 		
-		return ok(Collections.EMPTY_LIST);
+		return ok(Collections.emptyList());
 		
 	}
 	
 	public ResponseEntity<List<Vaccin>>getVaccinByIdCentreVaccination(Long idCentreVaccination){
-		return ok(Collections.EMPTY_LIST);
+		return ok(Collections.emptyList());
 	}
+	
 	
 }

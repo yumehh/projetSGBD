@@ -64,6 +64,7 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		cv.setAdresse(centreVaccination.getAdresse());
 		cv.setHeureOuverture(centreVaccination.getHeureOuverture());
 		cv.setLocalite(centreVaccination.getLocalite());
+		cv.setIdAssociation(centreVaccination.getAssociation().getIdAssociation());
 		return cv;
 	}
 	
@@ -86,14 +87,17 @@ public class CentreVaccinationServiceImpl implements CentreVaccinationService {
 		.dateNaissance(pe.getDateNaissance())
 		.pays(pe.getPays())
 		.ville(pe.getVille())
-		.adresse(pe.getAdresse());
+		.adresse(pe.getAdresse())
+		.idCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination());
 		return p;
 	}
 	
 	public Planning toModel(PlanningEntity pe) {
 		Planning p = new Planning();
-		p.setIdPlanning(pe.getIdPlanning());
-		p.setDateRdv(pe.getDateRdv());
+		p.idPlanning(pe.getIdPlanning())
+			.dateRdv(pe.getDateRdv())
+			.idCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination());
+		
 		return p;
 	}
 

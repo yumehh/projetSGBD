@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -42,8 +43,13 @@ public class PatientEntity {
 	@JoinColumn(name="idAssociation")
 	AssociationEntity association;
 	
+	
 	@ManyToMany(mappedBy = "patient")
 	List<PlanningEntity> planning;
+	
+	
+	@OneToMany(mappedBy = "patient")
+	List<PatientPlanningEntity> patientPlanning;
 	
 }
 

@@ -37,7 +37,12 @@ tags:
     description: Planning definition
     externalDocs:
       description: Find out more (extra document link)
-      url: http://swagger.io 
+      url: http://swagger.io
+  - name: PatientPlanning
+    description: PatientPlanning definition
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io     
 
 paths:
   /api/v1/patient/{idPatient}:
@@ -340,6 +345,66 @@ paths:
       responses:
         201:
           description: created
+          content: {}
+  /api/v1/patientPlanning/{idPatientPlanning}:
+    get:
+      tags:
+        - PatientPlanning
+      summary: Returns the PatientPlanning
+      description: Returns the PatientPlanning
+      operationId: getPatientPlanningByIdPatientPlanning
+      parameters:
+        - name: idPatientPlanning
+          in: path
+          description: IdPatientPlanning Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+    delete:
+      tags:
+        - PatientPlanning
+      summary: Delete the PatientPlanning
+      description: Deletes the PatientPlanning
+      operationId: deletePatientPlanning
+      parameters:
+        - name: idPatientPlanning
+          in: path
+          description: PatientPlanning id
+          required: true
+          schema:
+            type: number
+      responses:
+        204:
+          description: successful operation
+        404:
+          description: Given user ID doesn't exist
+          content: {}
+  /api/v1/addPatientPlanning:
+    post:
+      tags:
+      - PatientPlanning
+      summary: Create the PatientPlanning
+      description: Create the PatientPlanning
+      operationId: createPatientPlanning
+      requestBody: 
+        description: user object
+        content: 
+          application/xml:
+            schema: 
+              $ref: '#/components/schemas/PatientPlanning'
+          application/json:    
+            schema:
+              $ref: '#/components/schemas/PatientPlanning'
+      responses:
+        201:
+          description: created
           content: {}        
 components:
   schemas:
@@ -377,6 +442,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Planning'
+        PatientPlanning:
+          description: Collection of PatientPlanning
+          type: array
+          items:
+            $ref: '#/components/schemas/PatientPlanning'    
         idCentreVaccination:
           description : fk
           type: integer
@@ -478,4 +548,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Patient'
+        PatientPlanning:
+          description: Collection of PatientPlanning
+          type: array
+          items:
+            $ref: '#/components/schemas/PatientPlanning'    
+    PatientPlanning:
+      description: PatientPlanning
+      type: object
+      properties:
+        idPatientPlanning:
+          description: id
+          type: integer
+          format: int64
+        idPatient:
+          description: idPatient
+          type: integer
+          format: int64
+        idPlanning:
+          description: idPlanning
+          type: integer
+          format: int64
             

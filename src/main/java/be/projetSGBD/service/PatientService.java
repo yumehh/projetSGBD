@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import be.projetSGBD.entity.PatientEntity;
+import be.projetSGBD.entity.PatientPlanningEntity;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.model.PatientPlanning;
 
 public interface PatientService {
 
@@ -32,4 +34,8 @@ public interface PatientService {
 	public PatientEntity toEntity(Patient model);
 	
 	public List<Patient> toModelListPatient(List<PatientEntity> list);
+	
+	public List<PatientPlanningEntity> PatientPlanningByPatientId(long idPatient);
+	
+	public List<PatientPlanning> toModelListPatientPlanningPatient(List<PatientPlanningEntity> list); 
 }

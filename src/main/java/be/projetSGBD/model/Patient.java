@@ -1,6 +1,7 @@
 package be.projetSGBD.model;
 
 import java.util.Objects;
+import be.projetSGBD.model.PatientPlanning;
 import be.projetSGBD.model.Planning;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -64,6 +65,11 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
   @JacksonXmlProperty(localName = "Planning")
   @Valid
   private List<Planning> planning = null;
+
+  @JsonProperty("PatientPlanning")
+  @JacksonXmlProperty(localName = "PatientPlanning")
+  @Valid
+  private List<PatientPlanning> patientPlanning = null;
 
   @JsonProperty("idCentreVaccination")
   @JacksonXmlProperty(localName = "idCentreVaccination")
@@ -262,6 +268,35 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     this.planning = planning;
   }
 
+  public Patient patientPlanning(List<PatientPlanning> patientPlanning) {
+    this.patientPlanning = patientPlanning;
+    return this;
+  }
+
+  public Patient addPatientPlanningItem(PatientPlanning patientPlanningItem) {
+    if (this.patientPlanning == null) {
+      this.patientPlanning = new ArrayList<>();
+    }
+    this.patientPlanning.add(patientPlanningItem);
+    return this;
+  }
+
+  /**
+   * Collection of PatientPlanning
+   * @return patientPlanning
+  */
+  @ApiModelProperty(value = "Collection of PatientPlanning")
+
+  @Valid
+
+  public List<PatientPlanning> getPatientPlanning() {
+    return patientPlanning;
+  }
+
+  public void setPatientPlanning(List<PatientPlanning> patientPlanning) {
+    this.patientPlanning = patientPlanning;
+  }
+
   public Patient idCentreVaccination(Long idCentreVaccination) {
     this.idCentreVaccination = idCentreVaccination;
     return this;
@@ -321,13 +356,14 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
         Objects.equals(this.ville, patient.ville) &&
         Objects.equals(this.adresse, patient.adresse) &&
         Objects.equals(this.planning, patient.planning) &&
+        Objects.equals(this.patientPlanning, patient.patientPlanning) &&
         Objects.equals(this.idCentreVaccination, patient.idCentreVaccination) &&
         Objects.equals(this.idAssociation, patient.idAssociation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idPatient, numeroNational, nomFamille, prenom, dateNaissance, pays, ville, adresse, planning, idCentreVaccination, idAssociation);
+    return Objects.hash(idPatient, numeroNational, nomFamille, prenom, dateNaissance, pays, ville, adresse, planning, patientPlanning, idCentreVaccination, idAssociation);
   }
 
   @Override
@@ -344,6 +380,7 @@ public class Patient extends RepresentationModel<Patient>  implements Serializab
     sb.append("    ville: ").append(toIndentedString(ville)).append("\n");
     sb.append("    adresse: ").append(toIndentedString(adresse)).append("\n");
     sb.append("    planning: ").append(toIndentedString(planning)).append("\n");
+    sb.append("    patientPlanning: ").append(toIndentedString(patientPlanning)).append("\n");
     sb.append("    idCentreVaccination: ").append(toIndentedString(idCentreVaccination)).append("\n");
     sb.append("    idAssociation: ").append(toIndentedString(idAssociation)).append("\n");
     sb.append("}");

@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -30,6 +31,7 @@ public class PlanningEntity {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	Date dateRdv;
 	
+	
 	@ManyToMany(cascade = {CascadeType.ALL})
 	@JoinTable(
 			name="PatientPlanning",
@@ -37,7 +39,11 @@ public class PlanningEntity {
 			inverseJoinColumns = {@JoinColumn(name="idPatient")})
 	List<PatientEntity> patient;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="idCentreVaccination")
 	CentreVaccinationEntity centreVaccination;
+	
+	@OneToMany(mappedBy = "planning")
+	List<PatientPlanningEntity> patientPlanning;
 }

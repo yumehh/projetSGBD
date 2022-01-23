@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import be.projetSGBD.controller.PatientController;
 import be.projetSGBD.entity.PatientEntity;
 import be.projetSGBD.model.Patient;
+import be.projetSGBD.service.PatientPlanningService;
 import be.projetSGBD.service.PatientService;
 import be.projetSGBD.service.PlanningService;
 
@@ -20,6 +21,7 @@ public class PatientRepresentationModelAssembler extends RepresentationModelAsse
 
 	private PatientService patientService;
 	private PlanningService planningService;
+	private PatientPlanningService ppService;
 	private PlanningRepresentationModelAssembler planningAssembler;
 	
 	
@@ -50,6 +52,7 @@ public class PatientRepresentationModelAssembler extends RepresentationModelAsse
 		.adresse(entity.getAdresse())
 		.idCentreVaccination(entity.getCentreVaccination().getIdCentreVaccination())
 		.idAssociation(entity.getAssociation().getIdAssociation())
+		.patientPlanning(patientService.toModelListPatientPlanningPatient(entity.getPatientPlanning()))
 		.planning(planningService.toModelList(entity.getPlanning()).stream().collect(Collectors.toList()));
 		;
 		

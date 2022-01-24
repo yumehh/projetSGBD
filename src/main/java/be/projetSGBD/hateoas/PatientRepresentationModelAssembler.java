@@ -53,7 +53,7 @@ public class PatientRepresentationModelAssembler extends RepresentationModelAsse
 		.idCentreVaccination(entity.getCentreVaccination().getIdCentreVaccination())
 		.idAssociation(entity.getAssociation().getIdAssociation())
 		.patientPlanning(patientService.toModelListPatientPlanningPatient(entity.getPatientPlanning()))
-		.planning(planningService.toModelList(entity.getPlanning()).stream().collect(Collectors.toList()));
+		.planning(planningService.toModelList(entity.getPlanning()).stream().collect(Collectors.toList()))
 		;
 		
 		resource.add(linkTo(methodOn(PatientController.class).getPatientByIdPatient(entity.getIdPatient())).withSelfRel());

@@ -65,10 +65,13 @@ public class PlanningServiceImpl implements PlanningService {
 	public PlanningEntity createPlanning(Date dateRdv, Long idCentre) {
 		PlanningEntity pe = new PlanningEntity();
 		CentreVaccinationEntity cve = new CentreVaccinationEntity();
+		PatientPlanningEntity pp = new PatientPlanningEntity();
 
 		cve.setIdCentreVaccination(idCentre);
 		pe.setDateRdv(dateRdv);
 		pe.setCentreVaccination(cve);
+		pe.setPatient(cve.getPatient());
+		
 		
 		return planningRepo.save(pe);
 	}

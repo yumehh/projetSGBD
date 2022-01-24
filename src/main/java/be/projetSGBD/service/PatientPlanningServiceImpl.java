@@ -53,7 +53,7 @@ public class PatientPlanningServiceImpl implements PatientPlanningService {
 		ppe.setPlanning(planning);
 		
 		System.out.println("ppe " + ppe);
-		System.out.println("idpatient : " + ppe.getPatient().getIdPatient() + "idplanning : " + ppe.getPlanning().getIdPlanning());
+		System.out.println("idpatient : " + ppe.getPatient().getIdPatient() + " // idplanning : " + ppe.getPlanning().getIdPlanning());
 		
 		return ppRepo.save(ppe);
 	}

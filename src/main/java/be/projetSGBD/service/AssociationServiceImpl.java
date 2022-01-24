@@ -64,7 +64,11 @@ public class AssociationServiceImpl implements AssociationService {
 		.dateNaissance(pe.getDateNaissance())
 		.pays(pe.getPays())
 		.ville(pe.getVille())
-		.adresse(pe.getAdresse());
+		.adresse(pe.getAdresse())
+		.idCentreVaccination(pe.getCentreVaccination().getIdCentreVaccination())
+		.idAssociation(pe.getAssociation().getIdAssociation())
+		;
+		
 		return p;
 	} 
 	
@@ -73,7 +77,9 @@ public class AssociationServiceImpl implements AssociationService {
 		cv.idCentreVaccination(cve.getIdCentreVaccination())
 		.localite(cve.getLocalite())
 		.adresse(cve.getAdresse())
-		.heureOuverture(cve.getHeureOuverture());
+		.heureOuverture(cve.getHeureOuverture())
+		.idAssociation(cve.getAssociation().getIdAssociation())
+		;
 		return cv;
 	}
 

@@ -16,8 +16,6 @@ import be.projetSGBD.service.PatientPlanningService;
 public class PatientPlanningRepresentationModelAssembler extends RepresentationModelAssemblerSupport<PatientPlanningEntity, PatientPlanning> {
 
 	private PatientPlanningService ppService;
-	
-	
 
 	public PatientPlanningRepresentationModelAssembler(PatientPlanningService ppService) {
 		super(PatientPlanningController.class, PatientPlanning.class);

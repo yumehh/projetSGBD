@@ -4,11 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -44,7 +46,11 @@ public class PatientEntity {
 	AssociationEntity association;
 	
 	
-	@ManyToMany(mappedBy = "patient")
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JoinTable(
+			name="PatientPlanning",
+			joinColumns= {@JoinColumn(name="idPlanning")},
+			inverseJoinColumns = {@JoinColumn(name="idPatient")})
 	List<PlanningEntity> planning;
 	
 	

@@ -71,4 +71,10 @@ public class PatientPlanningServiceImpl implements PatientPlanningService {
 		return ppe;
 	}
 
+	@Override
+	public PatientPlanningEntity createPatientPlanning(PatientPlanningEntity entity) {
+		
+		return ppRepo.save(entity);
+	}
+
 }

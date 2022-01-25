@@ -72,7 +72,6 @@ public class PlanningServiceImpl implements PlanningService {
 		pe.setCentreVaccination(cve);
 		pe.setPatient(cve.getPatient());
 		
-		
 		return planningRepo.save(pe);
 	}
 

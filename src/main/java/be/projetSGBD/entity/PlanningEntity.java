@@ -32,11 +32,7 @@ public class PlanningEntity {
 	Date dateRdv;
 	
 	
-	@ManyToMany(cascade = {CascadeType.ALL})
-	@JoinTable(
-			name="PatientPlanning",
-			joinColumns= {@JoinColumn(name="idPlanning")},
-			inverseJoinColumns = {@JoinColumn(name="idPatient")})
+	@ManyToMany(mappedBy = "planning")
 	List<PatientEntity> patient;
 	
 	

@@ -13,6 +13,8 @@ public interface PatientPlanningService {
 	
 	public PatientPlanningEntity createPatientPlanning(Long idPatient, Long idPlanning);
 	
+	public PatientPlanningEntity createPatientPlanning(PatientPlanningEntity entity);
+	
 	public void deletePatientPlanning(long idPatientPlanning);
 	
 	public PatientPlanningEntity toEntity(PatientPlanning model);
